@@ -27,9 +27,5 @@ I can create visually appealing and robust applications using both backend and f
 [linkedin]: https://linkedin.com/in/mdeboute "Linkedin Profile"
 
 <!-- badges -->
-[gmail_badge]: https://img.shields.io/badge/-cristofer.pro%icloud.com-red?style=flat-square&logo=Gmail&logoColor=white&link=mailto:crisotfer.pro@icloud.com
+[gmail_badge]: https://img.shields.io/badge/-martin.deboute%40gmail.com-red?style=flat-square&logo=Gmail&logoColor=white&link=mailto:martin.deboute@gmail.com
 [linkedin_badge]: https://img.shields.io/badge/-Linkedin-blue?style=flat-square&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/mdeboute
------
-Credits: [mdeboute](https://github.com/mdeboute)
-
-Last Edited on: 15/01/2021
