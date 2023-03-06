@@ -13,7 +13,7 @@ I can create visually appealing and robust applications using both backend and f
 
 ## 📧 Contact me
 
-[![gmail_badge]](mailto:cristofer.pro@icloud.com) [![linkedin_badge]][[linkedin]]  ![visitors](https://visitor-badge.glitch.me/badge?page_id=mdeboute.mdeboute)
+[![gmail_badge]](mailto:martin.deboute@gmail.com) [![linkedin_badge]][linkedin]  ![visitors](https://visitor-badge.glitch.me/badge?page_id=mdeboute.mdeboute)
 
 ## 🔮 Tools, Technologies and Languages
 
