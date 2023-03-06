@@ -13,7 +13,7 @@ I can create visually appealing and robust applications using both backend and f
 
 ## 📧 Contact me
 
-[![gmail_badge]](mailto:cristofer.pro@icloud.com.com) [![linkedin_badge]][[linkedin](https://www.linkedin.com/in/cristofer-jimenez/)]  ![visitors](https://visitor-badge.glitch.me/badge?page_id=mdeboute.mdeboute)
+[![gmail_badge]](mailto:cristofer.pro@icloud.com) [![linkedin_badge]][[linkedin]]  ![visitors](https://visitor-badge.glitch.me/badge?page_id=mdeboute.mdeboute)
 
 ## 🔮 Tools, Technologies and Languages
 
@@ -27,7 +27,7 @@ I can create visually appealing and robust applications using both backend and f
 [linkedin]: https://linkedin.com/in/mdeboute "Linkedin Profile"
 
 <!-- badges -->
-[gmail_badge]: https://img.shields.io/badge/-martin.deboute%40gmail.com-red?style=flat-square&logo=Gmail&logoColor=white&link=mailto:martin.deboute@gmail.com
+[gmail_badge]: https://img.shields.io/badge/-cristofer.pro%icloud.com-red?style=flat-square&logo=Gmail&logoColor=white&link=mailto:crisotfer.pro@icloud.com
 [linkedin_badge]: https://img.shields.io/badge/-Linkedin-blue?style=flat-square&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/mdeboute
 -----
 Credits: [mdeboute](https://github.com/mdeboute)
