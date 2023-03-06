@@ -1,7 +1,9 @@
 
 # Hi 👋🏽, I'm Cristofer Jimenez
 
-Hi, i'm an french guy with an interest in programming & mathematics 💻. I'm currently studying at [University of Bordeaux](https://www.u-bordeaux.fr) to become an Operations Research Engineer.
+I am a skilled full stack developer based in London with expertise in design and coding 🔥. I can create visually appealing and robust applications using both backend and frontend technologies such as SQL and React. My talents make me a valuable asset for developing high-quality applications.
+
+
 
 - I love nature 🎣🌲, sport 💪, guitar 🎸 and reading 📚.
 - I enjoy learning new stuff and making notes 📄.
