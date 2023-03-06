@@ -6,10 +6,10 @@ I can create visually appealing and robust applications using both backend and f
 
 
 
-- I love nature 🎣🌲, sport 💪, guitar 🎸 and reading 📚.
+- I love Gym and Boxing 🥊.
 - I enjoy learning new stuff and making notes 📄.
 - I like to travel and I like to have new opportunities 🛫.
-- I'm an Open Source enthusiast 🤠.
+- I'm a forex enthusiast 📈.
 
 ## 📧 Contact me
 
