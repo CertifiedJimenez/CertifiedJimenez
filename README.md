@@ -6,14 +6,14 @@ I can create visually appealing and robust applications using both backend and f
 
 
 
-- I love Gym and Boxing 🥊.
+- I love going Gym and persuing Boxing 🥊.
 - I enjoy learning new stuff and making notes 📄.
 - I like to travel and I like to have new opportunities 🛫.
-- I'm a forex enthusiast 📈.
+- I'm also a forex enthusiast 📈.
 
 ## 📧 Contact me
 
-[![gmail_badge]](mailto:martin.deboute@gmail.com) [![linkedin_badge]][linkedin]  ![visitors](https://visitor-badge.glitch.me/badge?page_id=mdeboute.mdeboute)
+[![gmail_badge]](mailto:cristofer.pro@icloud.com.com) [![linkedin_badge]][[linkedin](https://www.linkedin.com/in/cristofer-jimenez/)]  ![visitors](https://visitor-badge.glitch.me/badge?page_id=mdeboute.mdeboute)
 
 ## 🔮 Tools, Technologies and Languages
 
