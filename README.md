@@ -1,7 +1,8 @@
 
 # Hi 👋🏽, I'm Cristofer Jimenez
 
-I am a skilled full stack developer based in London with expertise in design and coding 🔥. I can create visually appealing and robust applications using both backend and frontend technologies such as SQL and React. My talents make me a valuable asset for developing high-quality applications.
+I am a skilled full stack developer based in London with expertise in design and coding 💻. 
+I can create visually appealing and robust applications using both backend and frontend technologies such as SQL and React. My talents make me a valuable asset for developing high-quality applications 🔥.
 
 
 
