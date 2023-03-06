@@ -11,9 +11,9 @@ I can create visually appealing and robust applications using both backend and f
 - I like to travel and I like to have new opportunities 🛫.
 - I'm also a forex enthusiast 📈.
 
-## 📧 Contact me
+## 📧 Lets Talk
 
-[![gmail_badge]](mailto:martin.deboute@gmail.com) [![linkedin_badge]][linkedin]  ![visitors](https://visitor-badge.glitch.me/badge?page_id=mdeboute.mdeboute)
+[![gmail_badge]](mailto:contact@cristoferjimenez.com) [![linkedin_badge]][linkedin]  ![visitors](https://visitor-badge.glitch.me/badge?page_id=mdeboute.mdeboute)
 
 ## 🔮 Tools, Technologies and Languages
 
@@ -23,8 +23,8 @@ I can create visually appealing and robust applications using both backend and f
 [![Wakatime stats](https://github-readme-stats.vercel.app/api/wakatime?username=mdeboute&layout=compact&v=2)](https://wakatime.com/@mdeboute)
 
 <!-- profile links -->
-[github_profile]: https://github.com/mdeboute "Github Profile"
-[linkedin]: https://linkedin.com/in/mdeboute "Linkedin Profile"
+[github_profile]: https://github.com/CertifiedJimenez "Github Profile"
+[linkedin]: https://linkedin.com/in/cristofer-jimenez "Linkedin Profile"
 
 <!-- badges -->
 [gmail_badge]: https://img.shields.io/badge/-martin.deboute%40gmail.com-red?style=flat-square&logo=Gmail&logoColor=white&link=mailto:martin.deboute@gmail.com
