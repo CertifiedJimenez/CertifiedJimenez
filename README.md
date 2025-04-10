@@ -2,9 +2,6 @@
 
 I’m a software engineer who’s all about building tech that actually makes an impact. I like keeping things sharp and efficient, whether I’m coding, trading, or crafting a design that hits just right. I run on problem-solving, pushing my projects forward, and seeing ideas come to life.
 
-![visitors](https://visitor-badge.glitch.me/badge?page_id=CertifiedJimenez.CertifiedJimenez)
-
-
 ## 💽 Tools, Technologies and Languages
 
 <p align="left">
