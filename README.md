@@ -5,7 +5,6 @@ From backend APIs to pixel-perfect UIs, I build applications that look good *and
 
 ![visitors](https://visitor-badge.glitch.me/badge?page_id=CertifiedJimenez.CertifiedJimenez)
 
----
 
 ## 💽 Tools, Technologies and Languages
 
@@ -25,7 +24,6 @@ From backend APIs to pixel-perfect UIs, I build applications that look good *and
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" width="40" alt="Bash"/>
 </p>
 
----
 
 ## 📧 Let's Talk
 
