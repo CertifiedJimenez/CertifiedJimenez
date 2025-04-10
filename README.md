@@ -1,7 +1,6 @@
 # Hi 👋🏽, I'm Cristofer Jimenez
 
-I’m a skilled full stack developer based in London (now Miami) with a sharp eye for design and a love for clean, robust code 💻.  
-From backend APIs to pixel-perfect UIs, I build applications that look good *and* perform like machines 🔥.
+I’m a software engineer who’s all about building tech that actually makes an impact. I like keeping things sharp and efficient, whether I’m coding, trading, or crafting a design that hits just right. I run on problem-solving, pushing my projects forward, and seeing ideas come to life.
 
 ![visitors](https://visitor-badge.glitch.me/badge?page_id=CertifiedJimenez.CertifiedJimenez)
 
