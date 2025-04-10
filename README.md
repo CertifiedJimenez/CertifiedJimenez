@@ -1,32 +1,45 @@
-
-# Hi 👋🏽, I'm Cristofer Jimenez
-
-I am a skilled full stack developer based in London with expertise in design and coding 💻. 
-I can create visually appealing and robust applications using both backend and frontend technologies such as SQL and React. My talents make me a valuable asset for developing high-quality applications 🔥.
-
-
-
-- I love going Gym and persuing Boxing 🥊.
-- I enjoy learning new stuff and making notes 📄.
-- I like to travel and I like to have new opportunities 🛫.
-- I'm also a forex enthusiast 📈.
-
-## 📧 Lets Talk
-
-[![gmail_badge]](mailto:contact@cristoferjimenez.com) [![linkedin_badge]][linkedin]  ![visitors](https://visitor-badge.glitch.me/badge?page_id=mdeboute.mdeboute)
-
-## 💽 Tools, Technologies and Languages
-
-<p align="left" > 
-<a href="https://www.djangoproject.com/community/logos/" target="_blank"> <img src="https://github.com/devicons/devicon/blob/master/icons/django/django-plain.svg" alt="django" width="40" height="40"/> </a> <a href="https://reactjs.org/" target="_blank"> <img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg" alt="React" width="40" height="40"/> </a> <a href="https://www.javascript.com/" target="_blank"> <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://www.python.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> <a href="https://html.spec.whatwg.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" alt="html5" width="40" height="40"/> </a> <a href="https://www.w3.org/Style/CSS/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" alt="css3" width="40" height="40"/> </a> <a href="https://www.postgresql.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" alt="postgresql" width="40" height="40"/> </a>
-<a href="https://git-scm.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" alt="git" width="40" height="40"/> </a> <a href="https://code.visualstudio.com/" target="_blank"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/1200px-Visual_Studio_Code_1.35_icon.svg.png" alt="vscode" width="40" height="40"/> </a> <a href="https://www.gnu.org/software/bash/" target="_blank"> <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/gnubash.svg" alt="bash" width="40" height="40"/> </a> 
-  
+<h1 align="center">Cristofer Jimenez</h1>
+<p align="center">
+  <strong>Software Engineer • Infra Architect • Automation-Obsessed</strong><br>
+  <em>London ➝ Miami | Django • AWS • LLMs • DevOps • Product-Driven</em>
 </p>
 
-<!-- profile links -->
-[github_profile]: https://github.com/CertifiedJimenez "Github Profile"
-[linkedin]: https://linkedin.com/in/cristofer-jimenez "Linkedin Profile"
+<hr/>
 
-<!-- badges -->
-[gmail_badge]: https://img.shields.io/badge/-cristofer.pro%40icloud.com-black?style=flat-square&logo=Apple&logoColor=white&link=mailto:cristofer.pro@icloud.com
-[linkedin_badge]: https://img.shields.io/badge/-Linkedin-blue?style=flat-square&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/cristofer-jimenez
+## 👋 About Me
+
+> I’m a software engineer who’s all about building tech that actually makes an impact.  
+> I like keeping things sharp and efficient—whether I’m coding, trading, or crafting a design that hits just right.  
+> I run on problem-solving, pushing my projects forward, and seeing ideas come to life.
+
+---
+
+## 🛠 Tech Stack
+
+<p align="center">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="36" alt="Python"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="36" alt="JavaScript"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="36" alt="TypeScript"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="36" alt="React"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original-wordmark.svg" width="52" alt="Next.js"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" width="36" alt="Django"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" width="36" alt="Flask"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" width="36" alt="PostgreSQL"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" width="36" alt="Redis"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="36" alt="Docker"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" width="64" alt="AWS"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" width="36" alt="Linux"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" width="36" alt="Bash"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="36" alt="GitHub"/>
+</p>
+
+
+---
+
+## 📬 Contact
+
+<p align="center">
+  <a href="mailto:contact@cristoferjimenez.com">📧 contact@cristoferjimenez.com</a> •  
+  <a href="https://cristoferjimenez.com">🌐 cristoferjimenez.com</a> •  
+  <a href="https://linkedin.com/in/cristoferjimenez">💼 LinkedIn</a>
+</p>
