@@ -8,7 +8,7 @@ import { ThemeContext, type DisplayMode } from './theme-context';
  * @returns Children wrapped in the display-mode context.
  */
 export function ThemeProvider(props: { children: ReactNode }) {
-  const [mode, setMode] = useState<DisplayMode>('dark');
+  const [mode, setMode] = useState<DisplayMode>('alternate');
   const value = useMemo(
     () => ({
       mode,

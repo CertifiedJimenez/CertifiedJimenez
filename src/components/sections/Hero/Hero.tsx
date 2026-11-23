@@ -37,7 +37,7 @@ export function Hero() {
             <Artwork svg={circles} />
           </div>
           <div className="hero--alternate">
-            <img src={angel} alt="" width="1086" height="1448" />
+            <img src={angel} alt="" width="1086" height="1448" fetchPriority="high" />
             <div className="hero--alternate-text">
               <Artwork svg={alternateWords} />
             </div>

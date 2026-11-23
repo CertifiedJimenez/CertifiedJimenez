@@ -9,7 +9,7 @@ import { Projects } from '../components/sections/Projects/Projects';
 import { portfolio } from '../content/portfolio';
 
 describe('portfolio interactions', () => {
-  it('toggles light and alternate artwork with mutually exclusive pressed states', async () => {
+  it('starts with the angel and keeps the artwork and light controls mutually exclusive', async () => {
     const user = userEvent.setup();
     render(
       <ThemeProvider>
@@ -19,8 +19,11 @@ describe('portfolio interactions', () => {
     );
     const light = screen.getByRole('button', { name: 'Toggle light theme' });
     const artwork = screen.getByRole('button', { name: 'Toggle alternate artwork' });
+    expect(artwork).toHaveAttribute('aria-pressed', 'true');
+    expect(light).toHaveAttribute('aria-pressed', 'false');
     await user.click(light);
     expect(light).toHaveAttribute('aria-pressed', 'true');
+    expect(artwork).toHaveAttribute('aria-pressed', 'false');
     await user.click(artwork);
     expect(light).toHaveAttribute('aria-pressed', 'false');
     expect(artwork).toHaveAttribute('aria-pressed', 'true');
