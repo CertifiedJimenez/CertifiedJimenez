@@ -13,6 +13,7 @@ const styles = [...html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)]
 assert(!/url\((?!["']?data:|["']?#)/i.test(styles), 'CSS assets must be embedded.');
 assert(html.includes('data:font/woff2;base64,'), 'Local fonts must be embedded.');
 assert(html.includes('data:image/png;base64,'), 'Alternate artwork must be embedded.');
+assert(html.includes('data:application/pdf;base64,'), 'The downloadable CV must be embedded.');
 console.log(
   'Verified dist-standalone/index.html: JavaScript, CSS, fonts and imagery are embedded.',
 );

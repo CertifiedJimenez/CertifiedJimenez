@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { ThemeContext, type DisplayMode } from './theme-context';
 
 /**
@@ -9,6 +9,14 @@ import { ThemeContext, type DisplayMode } from './theme-context';
  */
 export function ThemeProvider(props: { children: ReactNode }) {
   const [mode, setMode] = useState<DisplayMode>('alternate');
+  useEffect(() => {
+    const icon = document.head.querySelector<HTMLLinkElement>(
+      'link[data-dark-icon][data-light-icon]',
+    );
+    const href = mode === 'light' ? icon?.dataset.lightIcon : icon?.dataset.darkIcon;
+    if (href && icon?.getAttribute('href') !== href) icon?.setAttribute('href', href);
+  }, [mode]);
+
   const value = useMemo(
     () => ({
       mode,

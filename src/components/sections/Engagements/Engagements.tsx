@@ -1,4 +1,5 @@
 import type { Engagement } from '../../../types/portfolio';
+import cv from '../../../assets/documents/Cristofer-Jimenez-Hernandez-CV.pdf';
 import './Engagements.css';
 
 /**
@@ -21,6 +22,11 @@ export function Engagements(props: { engagements: Engagement[] }) {
           <p className="engagements--summary">{summary}</p>
         </article>
       ))}
+      <div className="engagements--download">
+        <a href={cv} download="Cristofer-Jimenez-Hernandez-CV.pdf">
+          Download CV (PDF)
+        </a>
+      </div>
     </section>
   );
 }

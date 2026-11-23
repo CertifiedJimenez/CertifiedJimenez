@@ -56,23 +56,28 @@ export function portfolioMetadata(standalone: boolean): Plugin {
       const title = [name, role.join(' ')].join(' — ');
       const imageUrl = new URL('share.jpg', siteUrl).href;
       const colors = readBrandColors();
-      const links: HtmlTagDescriptor['attrs'][] = standalone
-        ? [
-            {
-              rel: 'icon',
-              type: 'image/x-icon',
-              href:
-                'data:image/x-icon;base64,' + readFileSync('public/favicon.ico').toString('base64'),
-            },
-          ]
-        : [
-            { rel: 'icon', href: './favicon.ico', sizes: '16x16 32x32 48x48' },
-            { rel: 'icon', type: 'image/png', sizes: '16x16', href: './icons/favicon-16x16.png' },
-            { rel: 'icon', type: 'image/png', sizes: '32x32', href: './icons/favicon-32x32.png' },
-            { rel: 'apple-touch-icon', sizes: '192x192', href: './icons/192x192.png' },
-            { rel: 'mask-icon', color: colors.accentColor, href: './icons/safari-pinned-tab.svg' },
-            { rel: 'manifest', href: './site.webmanifest' },
-          ];
+      const iconUrl = (filename: string) =>
+        standalone
+          ? 'data:image/x-icon;base64,' + readFileSync('public/' + filename).toString('base64')
+          : './' + filename;
+      const darkIcon = iconUrl('favicon.ico');
+      const links: HtmlTagDescriptor['attrs'][] = [
+        {
+          rel: 'icon',
+          type: 'image/x-icon',
+          sizes: '16x16 32x32 48x48',
+          href: darkIcon,
+          'data-dark-icon': darkIcon,
+          'data-light-icon': iconUrl('icons/favicon-light.ico'),
+        },
+        ...(!standalone
+          ? [
+              { rel: 'apple-touch-icon', sizes: '192x192', href: './icons/192x192.png' },
+              { rel: 'mask-icon', color: '#a6a6a6', href: './icons/safari-pinned-tab.svg' },
+              { rel: 'manifest', href: './site.webmanifest' },
+            ]
+          : []),
+      ];
       const fields: Record<string, string> = {
         ...colors,
         robots: pagesBaseUrl ? 'index, follow' : 'noindex, nofollow',

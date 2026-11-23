@@ -29,6 +29,18 @@
 .engagements--summary {
   max-width: 58ch;
 }
+.engagements--download {
+  border-top: 1px solid var(--color-rule);
+  padding-top: 1rem;
+}
+.engagements--download a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-size);
+  font: 400 clamp(1rem, 1.4vw, 1.25rem) / var(--leading-body) var(--font-body);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
 @media (min-width: 769px) {
   .engagements--row {
     grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
