@@ -53,13 +53,6 @@ button:focus-visible {
 .hero--triquetra svg path {
   vector-effect: non-scaling-stroke;
 }
-.alternate-artwork .hero--words,
-.alternate-artwork .hero--666,
-.alternate-artwork .hero--111,
-.alternate-artwork .hero--33,
-.alternate-artwork .hero--triquetra {
-  display: none;
-}
 .alternate-artwork .wordmark--hidden {
   display: block;
 }

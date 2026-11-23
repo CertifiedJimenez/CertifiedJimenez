@@ -10,8 +10,7 @@ import type { DisplayMode } from '../context/theme-context';
 export function useArtworkTransition(rootRef: RefObject<HTMLDivElement | null>, mode: DisplayMode) {
   const previous = useRef(mode);
   useLayoutEffect(() => {
-    const changedArtwork =
-      previous.current !== mode && (mode === 'alternate' || previous.current === 'alternate');
+    const changedArtwork = previous.current !== mode;
     previous.current = mode;
     if (!changedArtwork || !rootRef.current) return;
     window.scrollTo({ top: 0, behavior: 'instant' });
