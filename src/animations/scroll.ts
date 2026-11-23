@@ -25,8 +25,13 @@ export function animateScroll(root: HTMLElement) {
       0,
     );
 
+  const mobile = matchMedia('(max-width: 768px)').matches;
   const logo = gsap.timeline({
-    scrollTrigger: { trigger: root.querySelector('.wordmark'), start: 'top 65%', once: true },
+    scrollTrigger: {
+      trigger: root.querySelector(mobile ? '.wordmark--wrap-svg' : '.wordmark'),
+      start: mobile ? 'top bottom' : 'top 65%',
+      once: true,
+    },
     defaults: { duration: 2, ease: 'power4.out' },
   });
   logo
