@@ -33,7 +33,7 @@ export function Home() {
       </a>
       <Header content={portfolio} />
       <main className="portfolio">
-        <Hero />
+        <Hero motto={portfolio.hero} />
         <Wordmark surname={portfolio.surname} />
         <Engagements engagements={portfolio.engagements} />
         <Projects projects={portfolio.projects} />

@@ -48,6 +48,7 @@
   height: auto;
 }
 .hero--alternate-text {
+  container-type: inline-size;
   position: absolute;
   top: 46%;
   inset-inline: -2%;
@@ -62,6 +63,33 @@
 .hero--alternate-text svg {
   display: block;
   width: 100%;
+}
+.hero--motto {
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  place-items: center;
+  gap: 0.25rem;
+  width: max-content;
+  min-height: var(--tap-size);
+  color: var(--color-foreground);
+  font-family: var(--font-body);
+  line-height: 1;
+  pointer-events: auto;
+}
+.hero--motto strong {
+  font-size: 9.5cqw;
+  font-weight: 700;
+}
+.hero--motto span {
+  font-size: max(0.875rem, 3cqw);
+  letter-spacing: var(--tracking-caption);
+}
+.hero--motto:is(:hover, :focus-visible) span {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 .hero--words {
   position: absolute;

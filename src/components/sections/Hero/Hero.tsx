@@ -1,4 +1,6 @@
 import { Artwork } from '../../common/Artwork/Artwork';
+import { ExternalLink } from '../../common/ExternalLink/ExternalLink';
+import type { PortfolioContent } from '../../../types/portfolio';
 import words from '../../../assets/icons/hero-words.svg?raw';
 import triangles from '../../../assets/icons/hero-triangles.svg?raw';
 import circles from '../../../assets/icons/hero-circles.svg?raw';
@@ -9,9 +11,10 @@ import './Hero.css';
 /**
  * Composes the original layered SVG hero and its alternate illustration.
  * @component
- * @returns The animated opening artwork with a semantic section heading.
+ * @param props - The two-line motto and its source on the angel artwork.
+ * @returns The opening artwork with a link to the reading behind the motto.
  */
-export function Hero() {
+export function Hero(props: { motto: PortfolioContent['hero'] }) {
   return (
     <section className="hero" aria-label="Introduction">
       <div className="container">
@@ -40,6 +43,10 @@ export function Hero() {
             <img src={angel} alt="" width="1086" height="1448" fetchPriority="high" />
             <div className="hero--alternate-text">
               <Artwork svg={alternateWords} />
+              <ExternalLink className="hero--motto" href={props.motto.href}>
+                <strong>{props.motto.title}</strong>
+                <span>{props.motto.subtitle}</span>
+              </ExternalLink>
             </div>
           </div>
         </div>

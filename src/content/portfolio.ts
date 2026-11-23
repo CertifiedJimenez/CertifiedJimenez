@@ -10,6 +10,11 @@ export const portfolio = {
   name: 'Cristofer Jimenez',
   surname: 'JIMENEZ',
   monogram: ['JI', 'ME', 'NEZ'],
+  hero: {
+    title: 'ALL THINGS',
+    subtitle: 'return to source',
+    href: 'https://laozi-taoteching.org/en/chapters/16/',
+  },
   location: 'London, UK',
   locationUrl: 'https://en.wikipedia.org/wiki/London',
   email,

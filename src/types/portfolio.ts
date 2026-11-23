@@ -34,6 +34,11 @@ export interface PortfolioContent {
   name: string;
   surname: string;
   monogram: string[];
+  hero: {
+    title: string;
+    subtitle: string;
+    href: string;
+  };
   location: string;
   locationUrl: string;
   email: string;
