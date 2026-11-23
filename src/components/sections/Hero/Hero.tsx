@@ -43,9 +43,19 @@ export function Hero(props: { motto: PortfolioContent['hero'] }) {
             <img src={angel} alt="" width="1086" height="1448" fetchPriority="high" />
             <div className="hero--alternate-text">
               <Artwork svg={alternateWords} />
-              <ExternalLink className="hero--motto" href={props.motto.href}>
-                <strong>{props.motto.title}</strong>
-                <span>{props.motto.subtitle}</span>
+              <ExternalLink
+                className="hero--motto"
+                href={props.motto.href}
+                aria-label={`${props.motto.title} ${props.motto.subtitle}`}
+              >
+                <svg viewBox="0 0 400 64" aria-hidden="true" focusable="false" textAnchor="middle">
+                  <text className="hero--motto-title" x="200" y="40.42">
+                    {props.motto.title}
+                  </text>
+                  <text className="hero--motto-caption" x="200" y="57.18">
+                    {props.motto.subtitle}
+                  </text>
+                </svg>
               </ExternalLink>
             </div>
           </div>

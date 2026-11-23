@@ -28,7 +28,7 @@ export function Engagements(props: { engagements: Engagement[] }) {
           </div>
           <div className="engagements--download">
             <a href={cv} download="Cristofer-Jimenez-Hernandez-CV.pdf">
-              Download CV (PDF)
+              <span>Download CV</span>
             </a>
           </div>
         </div>

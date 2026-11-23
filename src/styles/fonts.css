@@ -1,3 +1,10 @@
+/* Display capitals from the hero artwork. Other letters use the portfolio's body face. */
+@font-face {
+  font-family: HeroTitling;
+  src: url('../assets/fonts/hero-titling.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
 @font-face {
   font-family: ClassicRomanStd-Regular;
   src: url('../assets/fonts/classic-roman.woff2') format('woff2');

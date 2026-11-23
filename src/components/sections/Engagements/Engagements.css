@@ -36,26 +36,49 @@
   font: 400 max(1rem, var(--text-body)) / var(--leading-body) var(--font-body);
 }
 .engagements--download {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
   margin-top: var(--entry-gap);
-}
-.engagements--download::before,
-.engagements--download::after {
-  content: '';
-  width: clamp(2rem, 6vw, 6rem);
-  height: 1px;
-  background: var(--color-rule);
+  text-align: center;
 }
 .engagements--download a {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  gap: 1rem;
   min-height: var(--tap-size);
   color: var(--color-foreground);
-  font: 400 1rem / var(--leading-body) var(--font-body);
+  font: 400 clamp(1.125rem, 1.5vw, 1.5rem) / 1.2 var(--font-display);
 }
-.engagements--download a:hover {
+.engagements--download a::before,
+.engagements--download a::after {
+  content: '';
+  width: clamp(2rem, 5vw, 5rem);
+  height: 1px;
+  background: var(--color-rule);
+}
+.engagements--download a::before {
+  transform-origin: right;
+}
+.engagements--download a::after {
+  transform-origin: left;
+}
+.engagements--download span {
+  color: inherit;
+}
+.engagements--download a:is(:hover, :focus-visible, :active) {
   color: var(--color-accent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .engagements--download a,
+  .engagements--download span,
+  .engagements--download a::before,
+  .engagements--download a::after {
+    transition: var(--link-transition);
+  }
+  .engagements--download a:is(:hover, :focus-visible, :active) span {
+    transform: translateY(-1px) rotate(1deg) scale(1.01);
+  }
+  .engagements--download a:is(:hover, :focus-visible, :active)::before,
+  .engagements--download a:is(:hover, :focus-visible, :active)::after {
+    transform: scaleX(1.25);
+  }
 }

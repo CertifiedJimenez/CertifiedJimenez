@@ -13,18 +13,18 @@
   position: relative;
   overflow: visible;
 }
-.alternate-artwork .hero {
+.show-angel .hero {
   --hero-top-space: calc(7.24638vw + 4rem);
   --hero-bottom-space: clamp(1rem, 3svh, 2rem);
   margin: 0;
   padding: var(--hero-top-space) 0 var(--hero-bottom-space);
 }
 @media (min-width: 769px) {
-  .alternate-artwork .hero {
+  .show-angel .hero {
     --hero-top-space: calc(2.5vw + 4rem);
   }
 }
-.alternate-artwork .hero--wrapper {
+.show-angel .hero--wrapper {
   width: 100%;
   margin: 0;
 }
@@ -39,7 +39,7 @@
     width: 42.22222vw;
   }
 }
-.alternate-artwork .hero--alternate {
+.show-angel .hero--alternate {
   display: block;
 }
 .hero--alternate img {
@@ -47,17 +47,20 @@
   width: 100%;
   height: auto;
 }
+.theme-light .hero--alternate img {
+  filter: invert(1) hue-rotate(180deg) saturate(1.45);
+  mix-blend-mode: multiply;
+}
 .hero--alternate-text {
-  container-type: inline-size;
+  /* The reference overlays 90% (110% on desktop) of a wrapper 1.5 times the image width. */
   position: absolute;
-  top: 46%;
-  inset-inline: -2%;
-  transform: translateY(-50%);
+  top: 5%;
+  inset-inline: -17.5%;
   pointer-events: none;
 }
-@media (min-width: 769px) {
+@media (min-width: 1024px) {
   .hero--alternate-text {
-    inset-inline: -10%;
+    inset-inline: -32.5%;
   }
 }
 .hero--alternate-text svg {
@@ -65,29 +68,28 @@
   width: 100%;
 }
 .hero--motto:any-link {
+  /* Place the live lettering in the original 538 × 335 ornament coordinate system. */
   position: absolute;
-  top: 44%;
-  left: 50%;
+  top: calc(155 / 335 * 100%);
+  left: calc(264 / 538 * 100%);
+  width: calc(400 / 538 * 100%);
   transform: translateX(-50%);
-  display: grid;
-  place-items: center;
-  gap: 0.25rem;
-  width: max-content;
   min-height: var(--tap-size);
   color: var(--color-foreground);
-  font-family: var(--font-body);
-  line-height: 1;
   pointer-events: auto;
 }
-.hero--motto strong {
-  font-size: 9.5cqw;
-  font-weight: 700;
+.hero--motto svg {
+  fill: currentColor;
 }
-.hero--motto span {
-  font-size: max(0.875rem, 3cqw);
-  letter-spacing: var(--tracking-caption);
+.hero--motto-title {
+  font: 700 56px var(--font-hero-title);
 }
-.hero--motto :is(strong, span)::selection {
+.hero--motto-caption {
+  font: 400 5.75px var(--font-display);
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+.hero--motto text::selection {
   background: transparent;
   color: var(--color-foreground);
 }

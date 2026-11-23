@@ -63,6 +63,20 @@ export function animateScroll(root: HTMLElement) {
     },
   );
 
+  for (const item of select('#engagements-heading, .engagements--row, .engagements--download')) {
+    gsap.fromTo(
+      item,
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 2,
+        ease: 'power4.out',
+        scrollTrigger: { trigger: item, start: 'top 85%', once: true },
+      },
+    );
+  }
+
   root.querySelectorAll('[data-project]').forEach((project) => {
     const items = project.querySelectorAll(
       '.projects--client, .projects--title h3, .projects--year',
