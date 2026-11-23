@@ -18,6 +18,7 @@ export interface Project {
 export interface Engagement {
   company: string;
   role: string;
+  year: number;
   period: string;
   summary: string;
 }

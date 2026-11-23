@@ -6,9 +6,23 @@ import { Divider } from '../components/common/Divider/Divider';
 import { Footer } from '../components/layout/Footer/Footer';
 import { About } from '../components/sections/About/About';
 import { Projects } from '../components/sections/Projects/Projects';
+import { Engagements } from '../components/sections/Engagements/Engagements';
 import { portfolio } from '../content/portfolio';
 
 describe('portfolio interactions', () => {
+  it('shows the engagement year, expands its dates and exposes a named CV download', async () => {
+    const user = userEvent.setup();
+    render(<Engagements engagements={portfolio.engagements} />);
+    const company = screen.getByRole('heading', { name: '/ 2024 Artera' });
+    const dates = screen.getByText('Aug 2023 – Dec 2024');
+    expect(dates).not.toBeVisible();
+    await user.click(company);
+    expect(dates).toBeVisible();
+    expect(screen.getByRole('link', { name: 'Download CV' })).toHaveAttribute(
+      'download',
+      'Cristofer-Jimenez-Hernandez-CV.pdf',
+    );
+  });
   it('starts with the angel and keeps the artwork and light controls mutually exclusive', async () => {
     const user = userEvent.setup();
     render(

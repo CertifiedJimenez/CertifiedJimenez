@@ -1,5 +1,8 @@
 import type { Engagement } from '../../../types/portfolio';
 import cv from '../../../assets/documents/Cristofer-Jimenez-Hernandez-CV.pdf';
+import cvLettering from '../../../assets/icons/cv-lettering.svg?raw';
+import { Artwork } from '../../common/Artwork/Artwork';
+import { WorkEmblem } from '../../common/WorkEmblem/WorkEmblem';
 import './Engagements.css';
 
 /**
@@ -17,18 +20,34 @@ export function Engagements(props: { engagements: Engagement[] }) {
             Selected Engagements
           </h2>
           <div className="engagements--list">
-            {props.engagements.map(({ company, role, period, summary }) => (
+            {props.engagements.map(({ company, role, year, period, summary }, index) => (
               <article className="engagements--row" key={company}>
-                <p className="engagements--period">{period}</p>
-                <h3>{company}</h3>
+                <details className="engagements--dates">
+                  <summary>
+                    <h3>
+                      <span className="engagements--period">/ {year}</span>
+                      {company}
+                      <WorkEmblem className="engagements--emblem" index={index} />
+                    </h3>
+                  </summary>
+                  <p className="engagements--tenure">{period}</p>
+                </details>
                 <p className="engagements--role">{role}</p>
                 <p className="engagements--summary">{summary}</p>
               </article>
             ))}
           </div>
-          <div className="engagements--download">
-            <a href={cv} download="Cristofer-Jimenez-Hernandez-CV.pdf">
-              <span>Download CV</span>
+          <div className="engagements--download" id="download-cv">
+            <a
+              href={cv}
+              download="Cristofer-Jimenez-Hernandez-CV.pdf"
+              aria-label="Download CV"
+              title="Download CV"
+            >
+              <span className="engagements--download-seal" aria-hidden="true">
+                <Artwork svg={cvLettering} />
+                <span className="engagements--download-mark" />
+              </span>
             </a>
           </div>
         </div>

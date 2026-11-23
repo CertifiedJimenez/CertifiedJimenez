@@ -1,0 +1,20 @@
+.work-emblem {
+  position: absolute;
+  pointer-events: none;
+}
+.work-emblem svg {
+  display: block;
+  width: 100%;
+}
+.work-emblem path,
+.work-emblem__numeral {
+  opacity: 0;
+}
+.work-emblem__numeral {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--color-accent);
+  font: inherit;
+}

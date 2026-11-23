@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 104" aria-hidden="true">
+  <defs>
+    <path id="cv-upper" d="M 6 48 A 24 40 0 0 1 54 48" />
+    <path id="cv-lower" d="M 54 56 A 24 40 0 0 1 6 56" />
+  </defs>
+  <g fill="currentColor">
+    <text font-size="7.4" text-anchor="middle">
+      <textPath href="#cv-upper" startOffset="50%" textLength="87">DOWNLOAD CV</textPath>
+    </text>
+    <text font-size="7.4" text-anchor="middle">
+      <textPath href="#cv-lower" startOffset="50%" textLength="87">DOWNLOAD CV</textPath>
+    </text>
+    <circle cx="3.5" cy="52" r="1" />
+    <circle cx="56.5" cy="52" r="1" />
+  </g>
+</svg>

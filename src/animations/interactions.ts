@@ -11,21 +11,45 @@ export function animateInteractions(
   signal: AbortSignal,
   reducedMotion: boolean,
 ) {
-  root.querySelectorAll<HTMLElement>('[data-project]').forEach((project) => {
-    const link = project.querySelector('a');
-    const ornament = project.querySelectorAll(
-      '.projects--single-hover .number, .projects--single-hover .icon path',
-    );
+  root.querySelectorAll<HTMLElement>('[data-project], .engagements--row').forEach((entry) => {
+    const control = entry.querySelector<HTMLElement>('a, summary');
+    if (!control) return;
+    const dates = entry.querySelector('details');
+    const pointerArea = dates ? entry : control;
+    const ornament = entry.querySelectorAll('.work-emblem__numeral, .work-emblem path');
     const hover = gsap
       .timeline({
         paused: true,
-        defaults: { duration: reducedMotion ? 0 : 1.25, ease: 'power4.out' },
+        defaults: { duration: 1.25, ease: 'power4.out' },
       })
-      .to(ornament, { opacity: 1, stagger: reducedMotion ? 0 : 0.015 }, 0.1);
-    link?.addEventListener('pointerenter', () => hover.timeScale(1.5).play(), { signal });
-    link?.addEventListener('pointerleave', () => hover.timeScale(3).reverse(), { signal });
-    link?.addEventListener('focus', () => hover.timeScale(1.5).play(), { signal });
-    link?.addEventListener('blur', () => hover.timeScale(3).reverse(), { signal });
+      .to(ornament, { opacity: 1, stagger: 0.015 }, 0.1);
+    let hovered = false;
+    const update = () => {
+      const visible = hovered || control.matches(':focus-visible') || dates?.open;
+      if (reducedMotion) hover.progress(visible ? 1 : 0).pause();
+      else if (visible) hover.timeScale(1.5).play();
+      else hover.timeScale(3).reverse();
+    };
+    pointerArea.addEventListener(
+      'pointerenter',
+      (event) => {
+        hovered = event.pointerType !== 'touch';
+        update();
+      },
+      { signal },
+    );
+    pointerArea.addEventListener(
+      'pointerleave',
+      () => {
+        hovered = false;
+        update();
+      },
+      { signal },
+    );
+    control.addEventListener('focus', update, { signal });
+    control.addEventListener('blur', update, { signal });
+    dates?.addEventListener('toggle', update, { signal });
+    update();
   });
 
   if (reducedMotion || !matchMedia('(pointer: fine)').matches) return;

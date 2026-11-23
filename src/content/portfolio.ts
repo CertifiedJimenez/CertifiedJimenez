@@ -28,6 +28,7 @@ export const portfolio = {
     {
       company: 'GSK',
       role: 'Backend Software Engineer III',
+      year: 2025,
       period: 'Nov 2025 – Present',
       summary:
         'Build backend services for AI-assisted drug discovery workflows. Integrate LLMs and sub-agents into multi-step workflows, add observability to inspect execution, and set up isolated environments for testing.',
@@ -35,6 +36,7 @@ export const portfolio = {
     {
       company: 'InsightAI',
       role: 'Founding Engineer, CTO & Head of Engineering',
+      year: 2025,
       period: 'Mar 2024 – Apr 2025',
       summary:
         'Led the move from MVP to a white-label, multi-tenant SaaS platform with Django and Next.js. Built Stripe billing and retryable webhooks with AWS SQS, and grew the engineering team from 3 to 10.',
@@ -42,6 +44,7 @@ export const portfolio = {
     {
       company: 'ForgeOne',
       role: 'Software Consultant',
+      year: 2024,
       period: 'Dec 2024 – Present',
       summary:
         'Redesign backend infrastructure for startup clients. Build repeatable Azure deployments with Terraform, improve CI/CD with GitHub Actions, and implement distributed processing with Celery and Redis.',
@@ -49,6 +52,7 @@ export const portfolio = {
     {
       company: 'Artera',
       role: 'Founding Backend Software Engineer',
+      year: 2024,
       period: 'Aug 2023 – Dec 2024',
       summary:
         'Improved REST API performance with Redis caching and Sentry monitoring, managed AWS ECS and RDS, and built an S3 audio-processing pipeline.',
