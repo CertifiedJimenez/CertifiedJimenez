@@ -1,0 +1,27 @@
+@font-face {
+  font-family: ClassicRomanStd-Regular;
+  src: url('../assets/fonts/classic-roman.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: Walbaum120Pro;
+  src: url('../assets/fonts/walbaum.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: EngrvrsOldEngBTWXX-Regular;
+  src: url('../assets/fonts/engravers-old-english.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: Romana;
+  src: url('../assets/fonts/romana.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: Romana;
+  src: url('../assets/fonts/romana-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}

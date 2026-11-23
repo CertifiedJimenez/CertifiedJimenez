@@ -1,0 +1,301 @@
+.projects {
+  position: relative;
+  padding-top: var(--section-gap);
+  text-align: center;
+}
+.projects--skull {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  background-color: var(--color-cursor-overlay);
+  z-index: 100;
+  mix-blend-mode: exclusion;
+  width: 36.25vw;
+  height: 36.25vw;
+  pointer-events: none;
+  opacity: 0;
+}
+.projects--skull svg {
+  width: 31.25vw;
+  height: 16.625vw;
+}
+.projects--single {
+  position: relative;
+}
+.projects--single:not(:last-child) {
+  margin-bottom: var(--project-gap);
+}
+.projects--single.dac .projects--year {
+  top: 1.25vw;
+  right: 18.75vw;
+}
+.projects--single.substance .projects--year {
+  top: 1.25vw;
+  right: 2.1875vw;
+}
+.projects--single.sizzer .projects--year {
+  top: 1.25vw;
+  right: 18.125vw;
+}
+.projects--single.rupert .projects--year {
+  top: 1.125vw;
+  right: 6.875vw;
+}
+.projects--single.fanfanfan .projects--year {
+  top: 1.25vw;
+  right: 13.125vw;
+}
+.projects--single.impero .projects--year {
+  top: 1.25vw;
+  right: 15vw;
+}
+.projects--single.better-half .projects--year {
+  top: 1.25vw;
+  right: 16.25vw;
+}
+.projects--single.davide-baratta .projects--year {
+  top: 1.25vw;
+  right: 14.375vw;
+}
+.projects--single.climate .projects--year {
+  top: 1.25vw;
+  right: 16.25vw;
+}
+.projects--single.pittori .projects--year {
+  top: 1.125vw;
+  right: 12.5vw;
+}
+.projects--single.hub .projects--year {
+  top: 1.125vw;
+  right: 10.625vw;
+}
+.projects--single.robby .projects--year {
+  top: 1.125vw;
+  right: -1.5625vw;
+}
+.projects--single.will .projects--year {
+  top: 1.125vw;
+  right: 25vw;
+}
+.projects--single.coraline .projects--year {
+  top: 1.125vw;
+  right: 5vw;
+}
+.projects--single-hover {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+  width: 17.9375vw;
+  height: 26vw;
+  z-index: 10;
+}
+.projects--single-hover .number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+  color: var(--color-accent);
+  font-size: 6.25vw;
+  font-family: var(--font-body);
+  margin-top: 0.625vw;
+}
+.projects--single-hover .number-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+  margin-top: -4.375vw;
+  z-index: 10;
+}
+.projects--single-hover .number-label,
+.projects--single-hover .number-label span {
+  color: var(--color-accent);
+  font-size: 1.125vw;
+  font-family: var(--font-body);
+  font-weight: 700;
+}
+.projects--single-hover .number-label span {
+  position: relative;
+  top: -0.5vw;
+  padding-left: 0.125vw;
+  font-size: 0.5625vw;
+  text-decoration: underline;
+}
+.projects--single-hover .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+  width: 11.875vw;
+  height: 20.25vw;
+}
+.projects--single-hover .trident {
+  position: absolute;
+  width: 1.625vw;
+  height: 1.625vw;
+}
+.projects--single-hover .trident-1 {
+  top: 0;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, 0, 0);
+  transform: translate3d(-50%, 0, 0);
+}
+.projects--single-hover .trident-2 {
+  right: 0;
+  top: 50%;
+  margin-top: -0.3125vw;
+  -webkit-transform: translate3d(0, -50%, 0) rotate(90deg);
+  transform: translate3d(0, -50%, 0) rotate(90deg);
+}
+.projects--single-hover .trident-3 {
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, 0, 0) rotate(180deg);
+  transform: translate3d(-50%, 0, 0) rotate(180deg);
+}
+.projects--single-hover .trident-4 {
+  left: 0;
+  top: 50%;
+  margin-top: -0.25vw;
+  -webkit-transform: translate3d(0, -50%, 0) rotate(-90deg);
+  transform: translate3d(0, -50%, 0) rotate(-90deg);
+}
+.projects--year {
+  position: absolute;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  font-family: var(--font-display);
+  font-size: 2.41546vw;
+  line-height: 2.89855vw;
+  letter-spacing: var(--tracking-caption);
+}
+@media (min-width: 769px) {
+  .projects--year {
+    font-size: var(--text-caption);
+    line-height: 1.2;
+  }
+}
+.projects--info {
+  margin-bottom: 10px;
+}
+@media (min-width: 769px) {
+  .projects--info {
+    margin-bottom: 20px;
+  }
+}
+.projects--info p {
+  color: var(--color-accent);
+  text-transform: uppercase;
+  font-family: var(--font-display);
+  font-size: var(--text-caption);
+  line-height: 1.25;
+  letter-spacing: var(--tracking-caption);
+}
+@media (min-width: 769px) {
+  .projects--info p {
+    font-size: var(--text-caption);
+    line-height: 1.2;
+  }
+}
+.projects--title {
+  position: relative;
+}
+.projects--title h3 a {
+  display: inline-block;
+  font-size: var(--text-project);
+  line-height: 10vw;
+  letter-spacing: 0.625vw;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+}
+.projects--title h3 a em {
+  position: relative;
+  font-style: inherit;
+  margin-right: -1.69082vw;
+}
+@media (min-width: 769px) {
+  .projects--title h3 a em {
+    margin-right: -1.875vw;
+  }
+}
+.projects--bottom {
+  position: relative;
+  margin-top: var(--section-gap);
+  cursor: pointer;
+}
+@media (min-width: 1024px) {
+  .projects--bottom:hover .projects--bottom-icon {
+    -webkit-transform: rotate(180deg) scale(1.1);
+    -ms-transform: rotate(180deg) scale(1.1);
+    transform: rotate(180deg) scale(1.1);
+    transition: -webkit-transform 0.8s var(--ease-link);
+    transition: transform 0.8s var(--ease-link);
+    transition:
+      transform 0.8s var(--ease-link),
+      -webkit-transform 0.8s var(--ease-link);
+  }
+}
+.projects--bottom-icon {
+  position: relative;
+  display: block;
+  width: var(--divider-size);
+  margin: 0 auto;
+  pointer-events: none;
+  transition: -webkit-transform 0.4s var(--ease-link);
+  transition: transform 0.4s var(--ease-link);
+  transition:
+    transform 0.4s var(--ease-link),
+    -webkit-transform 0.4s var(--ease-link);
+}
+.projects--bottom-icon #sunmoon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+  width: var(--divider-symbol-size);
+}
+.projects--bottom-left,
+.projects--bottom-right {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: calc(50% - var(--divider-inset));
+  height: 1px;
+  pointer-events: none;
+  background-color: var(--color-rule);
+}
+.projects--bottom-left {
+  left: 0;
+}
+.projects--bottom-right {
+  right: 0;
+}
+
+/* Let the cascade resolve the current theme even if it changes during focus or hover. */
+.projects--single :is(.projects--title a, .projects--year, .projects--client p) {
+  color: var(--project-ink, var(--color-accent));
+  transition: color var(--project-hover-duration, var(--project-hover-out)) var(--ease-link);
+}
+.projects--single:has(.projects--title a:is(:hover, :focus)) {
+  --project-ink: var(--color-hover);
+  --project-hover-duration: var(--project-hover-in);
+}

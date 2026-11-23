@@ -1,0 +1,80 @@
+:root {
+  /* Brand colours are also used to generate the browser and install metadata. */
+  --color-accent: #ff0c3a;
+  --color-ink: #000000;
+  --color-paper: #ffffff;
+  --color-background: var(--color-ink);
+  --color-foreground: var(--color-paper);
+  --color-muted: #969696;
+  --color-rule: #333;
+  --color-hover: #111;
+  --color-image-frame: #30181b;
+  --color-ornament: #4d4d4d;
+  --color-engraving: #666;
+  --color-cursor-overlay: rgb(0 12 58 / 90%);
+
+  --font-display: ClassicRomanStd-Regular, serif;
+  --font-body: Romana, serif;
+  --font-heading: EngrvrsOldEngBTWXX-Regular, serif;
+  --font-numeral: Walbaum120Pro, serif;
+  --text-base: 14px;
+  --text-body: clamp(14px, 3.38vw, 17px);
+  --text-header: clamp(12px, 3.14vw, 15px);
+  --text-footer: clamp(12px, 2.7vw, 15px);
+  --text-caption: clamp(11px, 2.9vw, 14px);
+  --text-project: 12.5vw;
+  --text-project-long: 11vw;
+  --leading-body: 1.45;
+  --tracking-caption: 0.1em;
+
+  --page-gutter: 2.5vw;
+  --section-gap: 18.11594vw;
+  --project-gap: var(--section-gap);
+  --divider-size: 40px;
+  --divider-inset: 40px;
+  --divider-symbol-size: 15px;
+  --tap-size: 44px;
+  --focus-offset: 7px;
+  --project-hover-in: 830ms;
+  --project-hover-out: 420ms;
+  --ease-link: cubic-bezier(0, 1, 1, 1);
+  --link-transition: transform 0.3s var(--ease-link), color 0.1s var(--ease-link);
+}
+
+.site {
+  /* Historic red ink variations follow the accent, including when it changes at runtime. */
+  --color-triangle: var(--color-accent);
+  --color-emblem: var(--color-accent);
+  --color-hand: var(--color-accent);
+  --color-hand-shadow: var(--color-accent);
+}
+
+@supports (color: rgb(from red r g b)) {
+  .site {
+    --color-triangle: rgb(from var(--color-accent) calc(r - 17) calc(g + 21) calc(b + 4));
+    --color-emblem: rgb(from var(--color-accent) calc(r - 17) calc(g + 22) calc(b + 6));
+    --color-hand: rgb(from var(--color-accent) calc(r - 4) calc(g + 3) calc(b - 2));
+    --color-hand-shadow: rgb(from var(--color-accent) calc(r - 23) calc(g + 5) calc(b - 4));
+  }
+}
+
+.site.theme-light {
+  --color-background: var(--color-paper);
+  --color-foreground: var(--color-ink);
+  --color-muted: var(--color-foreground);
+  --color-hover: #efefef;
+}
+
+@media (min-width: 769px) {
+  :root {
+    --section-gap: 7.1875vw;
+    --project-gap: 9.375vw;
+    --divider-size: 50px;
+    --divider-inset: 85px;
+    --divider-symbol-size: 20px;
+    --text-body: clamp(13px, 0.875vw, 18px);
+    --text-header: var(--text-base);
+    --text-footer: max(11px, 0.75vw);
+    --text-caption: max(10px, 0.75vw);
+  }
+}

@@ -1,0 +1,100 @@
+.wordmark {
+  padding: 24.15459vw 0 0;
+}
+@media (min-width: 769px) {
+  .wordmark {
+    padding: 9.375vw 0 0;
+  }
+}
+.wordmark--wrap {
+  position: relative;
+}
+.wordmark--hidden {
+  display: none;
+  margin-top: 3.125vw;
+}
+@media screen and (max-width: 768px) {
+  .wordmark--hidden {
+    display: none !important;
+  }
+}
+.wordmark--hidden {
+  width: 100%;
+  font-size: 0.625vw;
+  letter-spacing: 1.167em;
+}
+.wordmark--bottom {
+  position: relative;
+  margin-top: 19.32367vw;
+}
+@media (min-width: 769px) {
+  .wordmark--bottom {
+    margin-top: 7.1875vw;
+  }
+}
+.wordmark--bottom-icon {
+  position: relative;
+  display: block;
+  width: var(--divider-size);
+  margin: 0 auto;
+}
+.wordmark--bottom-icon #flourishcross {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+  width: var(--divider-symbol-size);
+}
+.wordmark--bottom-left,
+.wordmark--bottom-right {
+  position: absolute;
+  top: 50%;
+  width: calc(50% - var(--divider-inset));
+  height: 1px;
+  pointer-events: none;
+  background-color: var(--color-rule);
+}
+.wordmark--bottom-left {
+  left: 0;
+}
+.wordmark--bottom-right {
+  right: 0;
+}
+.wordmark--numbers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.wordmark--numbers span {
+  position: absolute;
+  font-size: 1.69082vw;
+  color: var(--color-foreground);
+  font-family: var(--font-numeral);
+}
+@media (min-width: 459px) {
+  .wordmark--numbers span {
+    font-size: 0.75vw;
+  }
+}
+.wordmark--key {
+  position: absolute;
+  top: 0.72464vw;
+  right: -2.89855vw;
+  width: 1.93237vw;
+  height: 4.34783vw;
+}
+@media (min-width: 459px) {
+  .wordmark--key {
+    width: 0.75vw;
+    height: 1.6875vw;
+    top: 0.75vw;
+    right: -1.5625vw;
+  }
+}
+.wordmark--key svg {
+  width: 100%;
+  opacity: 0.2;
+}

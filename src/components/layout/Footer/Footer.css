@@ -1,0 +1,184 @@
+.footer {
+  padding-top: var(--section-gap);
+  padding-bottom: 12.07729vw;
+}
+@media (min-width: 769px) {
+  .footer {
+    padding-top: 10.625vw;
+    padding-bottom: 4.6875vw;
+  }
+}
+.footer .container {
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.footer .container > div {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 50%;
+}
+@media (min-width: 769px) {
+  .footer .container > div {
+    width: 25%;
+  }
+}
+.footer__left ul li:not(:last-child),
+.footer__right ul li:not(:last-child) {
+  margin-right: 1.93237vw;
+}
+@media (min-width: 769px) {
+  .footer__left ul li:not(:last-child),
+  .footer__right ul li:not(:last-child) {
+    margin-right: 1.875vw;
+  }
+}
+.footer__left ul li,
+.footer__left ul li a,
+.footer__right ul li,
+.footer__right ul li a {
+  font-family: var(--font-body);
+  font-size: var(--text-footer);
+  color: var(--color-foreground);
+}
+@media (min-width: 769px) {
+  .footer__left ul li,
+  .footer__left ul li a,
+  .footer__right ul li,
+  .footer__right ul li a {
+    font-size: var(--text-footer);
+    font-weight: 700;
+  }
+}
+.footer__left {
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+.footer__center {
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 4.34783vw !important;
+}
+@media (min-width: 769px) {
+  .footer__center {
+    width: 40% !important;
+  }
+}
+.footer__center p {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.625vw;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+.footer__center--1 {
+  text-align: right;
+  padding-right: 10px;
+}
+.footer__center--wrap {
+  position: relative;
+  width: 3.125vw;
+  cursor: pointer;
+}
+.footer__center--wrap svg path {
+  transition: fill 0.15s var(--ease-link);
+}
+.footer__center--wrap.satan svg path,
+.footer__center--wrap:hover svg path {
+  fill: var(--color-accent);
+}
+.footer__center--wrap #cross {
+  width: 4.34783vw;
+  height: 13.28502vw;
+}
+@media (min-width: 769px) {
+  .footer__center--wrap #cross {
+    position: absolute;
+    top: -5vw;
+    left: 50%;
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+    width: 1.0625vw;
+    height: 3.5vw;
+  }
+}
+.footer__center--wrap #eye {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+@media screen and (max-width: 768px) {
+  .footer__center--wrap #burst,
+  .footer__center--wrap #eye {
+    display: none;
+  }
+}
+.footer__center--2 {
+  text-align: left;
+  padding: 0 0.625vw;
+}
+.footer__right {
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+.footer__right a {
+  -webkit-transform-origin: left;
+  -ms-transform-origin: left;
+  transform-origin: left;
+  transition: var(--link-transition);
+  will-change: color, transform;
+}
+.footer__right a:hover {
+  color: var(--color-accent);
+  -webkit-transform: translate3d(0, -2px, 0) rotate(2deg) scale(1.02);
+  transform: translate3d(0, -2px, 0) rotate(2deg) scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .footer .container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--tap-size) minmax(0, 1fr);
+    align-items: center;
+    padding-inline: 5vw;
+    gap: 6px;
+  }
+  .footer .container > div,
+  .footer .footer__center {
+    width: auto !important;
+  }
+  .footer__right ul {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    column-gap: clamp(5px, 1.8vw, 10px);
+  }
+  .footer__right ul li:not(:last-child) {
+    margin: 0;
+  }
+  .footer__right a,
+  .footer__center--wrap {
+    display: inline-grid;
+    min-height: var(--tap-size);
+    align-items: center;
+  }
+  .footer__center--wrap {
+    width: var(--tap-size);
+    justify-items: center;
+  }
+}
+
+@media (pointer: coarse) and (min-width: 769px) {
+  .footer__right a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-size);
+    font-size: max(12px, 0.75vw);
+  }
+}
