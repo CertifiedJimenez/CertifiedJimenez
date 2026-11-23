@@ -35,7 +35,7 @@ export function About(props: { content: PortfolioContent }) {
               <div key={index}>
                 {groups.map((group) => (
                   <p key={group.title}>
-                    <strong>{group.title}:</strong>
+                    <strong>{group.title}</strong>
                     {group.items.map((item) => (
                       <span className="text-line" key={item}>
                         {item}
@@ -49,7 +49,8 @@ export function About(props: { content: PortfolioContent }) {
         </div>
         <div className="about--center c-col-5 c-offset-2">
           <p>
-            {about.introduction} <ExternalLink href={profile.linkedIn}>{about.focus}</ExternalLink>.
+            {about.introduction}{' '}
+            <ExternalLink href={profile.linkedIn}>{about.experienceLink}</ExternalLink>.
           </p>
         </div>
         <div className="about--right c-col-5 c-offset-1">
@@ -67,6 +68,7 @@ export function About(props: { content: PortfolioContent }) {
             </button>
             .
           </p>
+          <p>Languages · {about.languages.join(' and ')}</p>
           <p>
             {about.invitation}
             <br />

@@ -3,7 +3,7 @@ import words from '../../../assets/icons/hero-words.svg?raw';
 import triangles from '../../../assets/icons/hero-triangles.svg?raw';
 import circles from '../../../assets/icons/hero-circles.svg?raw';
 import alternateWords from '../../../assets/icons/alternate-words.svg?raw';
-import angel from '../../../assets/images/angel.png';
+import angel from '../../../assets/images/angel2.png';
 import './Hero.css';
 
 /**

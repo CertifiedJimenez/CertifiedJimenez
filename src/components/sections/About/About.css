@@ -60,19 +60,9 @@
 }
 .about--left-top h2 {
   font-family: var(--font-heading);
-  font-size: min(23cqi, 5rem);
+  font-size: min(14cqi, 5rem);
   line-height: 0.9;
   word-spacing: -0.1em;
-}
-@media (min-width: 769px) {
-  .about--left-top h2 {
-    font-size: min(23cqi, 80px);
-  }
-}
-@media (min-width: 1440px) {
-  .about--left-top h2 {
-    font-size: min(23cqi, 5vw);
-  }
 }
 .about--left-bottom {
   display: -webkit-flex;

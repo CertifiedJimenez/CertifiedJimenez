@@ -14,6 +14,14 @@ export interface Project {
   layout: 'wide' | 'stacked';
 }
 
+/** A professional engagement with its role, time period and scope of work. */
+export interface Engagement {
+  company: string;
+  role: string;
+  period: string;
+  summary: string;
+}
+
 /** A named list of skills shown in the about section. */
 export interface SkillGroup {
   title: string;
@@ -34,14 +42,16 @@ export interface PortfolioContent {
   description: string;
   linkedIn: string;
   github: string;
+  engagements: Engagement[];
   projects: Project[];
   about: {
     heading: string[];
     introduction: string;
-    focus: string;
+    experienceLink: string;
     background: string;
     invitation: string;
     stack: string[];
+    languages: string[];
     skills: SkillGroup[][];
   };
   footer: {

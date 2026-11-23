@@ -32,11 +32,12 @@
   display: none;
   position: relative;
   margin-inline: auto;
-  width: min(
-    90vw,
-    34rem,
-    max(8rem, (100svh - var(--hero-top-space) - var(--hero-bottom-space)) * 0.75)
-  );
+  width: 85vw;
+}
+@media (min-width: 769px) {
+  .hero--alternate {
+    width: 42.22222vw;
+  }
 }
 .alternate-artwork .hero--alternate {
   display: block;
@@ -45,7 +46,6 @@
   display: block;
   width: 100%;
   height: auto;
-  outline: 1px solid var(--color-image-frame);
 }
 .hero--alternate-text {
   position: absolute;

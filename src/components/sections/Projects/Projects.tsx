@@ -11,10 +11,13 @@ import './Projects.css';
  */
 export function Projects(props: { projects: Project[] }) {
   return (
-    <section className="projects" aria-label="Selected projects" id="projects">
+    <section className="projects" aria-labelledby="personal-projects-heading" id="projects">
       <div className="container">
         <div className="c-col-20 c-offset-2">
           <div className="projects--wrapper">
+            <h2 className="projects--heading" id="personal-projects-heading">
+              Personal Projects
+            </h2>
             {props.projects.map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
             ))}

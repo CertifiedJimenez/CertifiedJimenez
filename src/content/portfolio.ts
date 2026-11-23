@@ -13,12 +13,42 @@ export const portfolio = {
   location: 'London, UK',
   locationUrl: 'https://en.wikipedia.org/wiki/London',
   email,
-  role: ['Software', 'Engineer'],
+  role: ['Senior Software Engineer', 'Contractor'],
   availability: 'Drop me a line',
   description:
-    'Cristofer Jimenez — software engineer in London. Python, Django, AI systems and full stack development.',
+    'Cristofer Jimenez is a London-based software engineering contractor specialising in Python backends, distributed systems, and applied AI.',
   linkedIn,
   github,
+  engagements: [
+    {
+      company: 'GSK',
+      role: 'Backend Software Engineer III',
+      period: 'Nov 2025 – Present',
+      summary:
+        'Build backend services for AI-assisted drug discovery workflows. Integrate LLMs and sub-agents into multi-step workflows, add observability to inspect execution, and set up isolated environments for testing.',
+    },
+    {
+      company: 'InsightAI',
+      role: 'Founding Engineer, CTO & Head of Engineering',
+      period: 'Mar 2024 – Apr 2025',
+      summary:
+        'Led the move from MVP to a white-label, multi-tenant SaaS platform with Django and Next.js. Built Stripe billing and retryable webhooks with AWS SQS, and grew the engineering team from 3 to 10.',
+    },
+    {
+      company: 'ForgeOne',
+      role: 'Software Consultant',
+      period: 'Dec 2024 – Present',
+      summary:
+        'Redesign backend infrastructure for startup clients. Build repeatable Azure deployments with Terraform, improve CI/CD with GitHub Actions, and implement distributed processing with Celery and Redis.',
+    },
+    {
+      company: 'Artera',
+      role: 'Founding Backend Software Engineer',
+      period: 'Aug 2023 – Dec 2024',
+      summary:
+        'Improved REST API performance with Redis caching and Sentry monitoring, managed AWS ECS and RDS, and built an S3 audio-processing pipeline.',
+    },
+  ],
   projects: [
     {
       id: 'drivelog',
@@ -62,36 +92,47 @@ export const portfolio = {
     },
   ],
   about: {
-    heading: ['Ideas into', 'real things.'],
+    heading: ['Backend systems', '& applied AI.'],
     introduction:
-      'I’m a software engineer building scalable backends, thoughtful interfaces and AI systems. I turn complex problems into useful products with',
-    focus: 'Python, Django and React',
-    background: 'Curious about code, design and trading.',
-    invitation: 'Have a project in mind? Let’s build something useful.',
-    stack: ['Python', 'Django', 'React'],
+      'I build Python backends and AI workflows. My work spans AI-assisted drug discovery at GSK, multi-tenant SaaS at InsightAI, and backend modernisation through ForgeOne.',
+    experienceLink: 'View my experience on LinkedIn',
+    background:
+      'I work with engineering teams and founders on backend architecture, distributed processing, and production delivery.',
+    invitation: 'Need a senior engineer for a backend or applied AI contract? Get in touch.',
+    stack: ['Python', 'Django', 'PostgreSQL'],
+    languages: ['English', 'Spanish'],
     skills: [
       [
         {
-          title: 'Backend',
-          items: ['Python', 'Django', 'Flask', 'PostgreSQL', 'Redis', 'REST APIs'],
+          title: 'Backend architecture',
+          items: [
+            'Python',
+            'Django REST Framework',
+            'PostgreSQL',
+            'Multi-tenant SaaS',
+            'Stripe billing',
+          ],
         },
-        { title: 'Frontend', items: ['JavaScript', 'TypeScript', 'React', 'Next.js'] },
+        {
+          title: 'Distributed systems',
+          items: ['Celery', 'Redis', 'AWS SQS', 'Azure Service Bus', 'Webhook retries'],
+        },
       ],
       [
         {
-          title: 'Tools & infrastructure',
-          items: ['Docker', 'Amazon Web Services', 'Linux', 'Bash', 'Git'],
-        },
-        {
-          title: 'Focus',
+          title: 'Applied AI',
           items: [
-            'Scalable backends',
-            'Secure authentication',
-            'AI systems',
-            'Full stack applications',
+            'LLM integration',
+            'Agent workflows',
+            'Observability',
+            'Sandbox testing',
+            'Citation-grounded responses',
           ],
         },
-        { title: 'Languages', items: ['English', 'Spanish'] },
+        {
+          title: 'Cloud & delivery',
+          items: ['AWS', 'Azure', 'Terraform', 'Docker', 'Kubernetes', 'GitHub Actions'],
+        },
       ],
     ],
   },
