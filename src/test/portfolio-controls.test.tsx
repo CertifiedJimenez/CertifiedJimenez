@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 import { ThemeProvider } from '../context/ThemeProvider';
-import { Divider } from '../components/common/Divider/Divider';
 import { Footer } from '../components/layout/Footer/Footer';
 import { About } from '../components/sections/About/About';
 import { Projects } from '../components/sections/Projects/Projects';
@@ -27,7 +26,7 @@ describe('portfolio interactions', () => {
     const user = userEvent.setup();
     render(
       <ThemeProvider>
-        <Divider variant="projects" />
+        <Projects projects={[]} />
         <Footer content={portfolio} />
       </ThemeProvider>,
     );

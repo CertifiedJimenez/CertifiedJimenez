@@ -227,57 +227,7 @@
   }
 }
 .projects--bottom {
-  position: relative;
   margin-top: var(--section-gap);
-  cursor: pointer;
-}
-@media (min-width: 1024px) {
-  .projects--bottom:hover .projects--bottom-icon {
-    -webkit-transform: rotate(180deg) scale(1.1);
-    -ms-transform: rotate(180deg) scale(1.1);
-    transform: rotate(180deg) scale(1.1);
-    transition: -webkit-transform 0.8s var(--ease-link);
-    transition: transform 0.8s var(--ease-link);
-    transition:
-      transform 0.8s var(--ease-link),
-      -webkit-transform 0.8s var(--ease-link);
-  }
-}
-.projects--bottom-icon {
-  position: relative;
-  display: block;
-  width: var(--divider-size);
-  margin: 0 auto;
-  pointer-events: none;
-  transition: -webkit-transform 0.4s var(--ease-link);
-  transition: transform 0.4s var(--ease-link);
-  transition:
-    transform 0.4s var(--ease-link),
-    -webkit-transform 0.4s var(--ease-link);
-}
-.projects--bottom-icon #sunmoon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate3d(-50%, -50%, 0);
-  transform: translate3d(-50%, -50%, 0);
-  width: var(--divider-symbol-size);
-}
-.projects--bottom-left,
-.projects--bottom-right {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: calc(50% - var(--divider-inset));
-  height: 1px;
-  pointer-events: none;
-  background-color: var(--color-rule);
-}
-.projects--bottom-left {
-  left: 0;
-}
-.projects--bottom-right {
-  right: 0;
 }
 
 /* Let the cascade resolve the current theme even if it changes during focus or hover. */

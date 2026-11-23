@@ -129,16 +129,10 @@
   justify-content: flex-end;
 }
 .footer__right a {
-  -webkit-transform-origin: left;
-  -ms-transform-origin: left;
-  transform-origin: left;
   transition: var(--link-transition);
-  will-change: color, transform;
 }
 .footer__right a:hover {
   color: var(--color-accent);
-  -webkit-transform: translate3d(0, -2px, 0) rotate(2deg) scale(1.02);
-  transform: translate3d(0, -2px, 0) rotate(2deg) scale(1.02);
 }
 
 @media (max-width: 768px) {

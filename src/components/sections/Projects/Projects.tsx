@@ -1,3 +1,4 @@
+import { useTheme } from '../../../hooks/useTheme';
 import type { Project } from '../../../types/portfolio';
 import { Divider } from '../../common/Divider/Divider';
 import { ProjectCard } from './ProjectCard';
@@ -10,6 +11,7 @@ import './Projects.css';
  * @returns The project list and its light-theme control.
  */
 export function Projects(props: { projects: Project[] }) {
+  const { mode, toggleLight } = useTheme();
   return (
     <section className="projects" aria-labelledby="personal-projects-heading" id="projects">
       <div className="container">
@@ -22,7 +24,7 @@ export function Projects(props: { projects: Project[] }) {
               <ProjectCard key={project.id} project={project} index={index} />
             ))}
           </div>
-          <Divider variant="projects" />
+          <Divider variant="projects" light={mode === 'light'} onToggle={toggleLight} />
         </div>
       </div>
     </section>

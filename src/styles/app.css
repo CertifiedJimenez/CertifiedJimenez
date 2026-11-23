@@ -35,9 +35,6 @@ html {
 .ornament-button {
   display: block;
 }
-.projects--bottom.ornament-button {
-  width: 100%;
-}
 .text-button:hover,
 a:hover {
   color: var(--color-accent);
@@ -139,8 +136,4 @@ button:focus-visible {
   .cursor-art {
     display: none;
   }
-}
-
-.site.theme-light .projects--bottom-icon {
-  transform: rotate(180deg);
 }

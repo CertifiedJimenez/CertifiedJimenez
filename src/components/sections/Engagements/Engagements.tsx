@@ -1,7 +1,6 @@
 import type { Engagement } from '../../../types/portfolio';
 import cv from '../../../assets/documents/Cristofer-Jimenez-Hernandez-CV.pdf';
-import cvLettering from '../../../assets/icons/cv-lettering.svg?raw';
-import { Artwork } from '../../common/Artwork/Artwork';
+import { Divider } from '../../common/Divider/Divider';
 import { WorkEmblem } from '../../common/WorkEmblem/WorkEmblem';
 import './Engagements.css';
 
@@ -37,19 +36,7 @@ export function Engagements(props: { engagements: Engagement[] }) {
               </article>
             ))}
           </div>
-          <div className="engagements--download" id="download-cv">
-            <a
-              href={cv}
-              download="Cristofer-Jimenez-Hernandez-CV.pdf"
-              aria-label="Download CV"
-              title="Download CV"
-            >
-              <span className="engagements--download-seal" aria-hidden="true">
-                <Artwork svg={cvLettering} />
-                <span className="engagements--download-mark" />
-              </span>
-            </a>
-          </div>
+          <Divider variant="cv" href={cv} filename="Cristofer-Jimenez-Hernandez-CV.pdf" />
         </div>
       </div>
     </section>

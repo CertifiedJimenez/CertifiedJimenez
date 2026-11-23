@@ -32,35 +32,6 @@
     margin-top: 7.1875vw;
   }
 }
-.wordmark--bottom-icon {
-  position: relative;
-  display: block;
-  width: var(--divider-size);
-  margin: 0 auto;
-}
-.wordmark--bottom-icon #flourishcross {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate3d(-50%, -50%, 0);
-  transform: translate3d(-50%, -50%, 0);
-  width: var(--divider-symbol-size);
-}
-.wordmark--bottom-left,
-.wordmark--bottom-right {
-  position: absolute;
-  top: 50%;
-  width: calc(50% - var(--divider-inset));
-  height: 1px;
-  pointer-events: none;
-  background-color: var(--color-rule);
-}
-.wordmark--bottom-left {
-  left: 0;
-}
-.wordmark--bottom-right {
-  right: 0;
-}
 .wordmark--numbers {
   position: absolute;
   top: 0;

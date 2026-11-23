@@ -33,16 +33,10 @@
   }
 }
 .header a {
-  -webkit-transform-origin: left;
-  -ms-transform-origin: left;
-  transform-origin: left;
   transition: var(--link-transition);
-  will-change: color, transform;
 }
 .header a:hover {
   color: var(--color-accent);
-  -webkit-transform: translate3d(0, -1px, 0) rotate(1deg) scale(1.01);
-  transform: translate3d(0, -1px, 0) rotate(1deg) scale(1.01);
 }
 .header > div {
   display: -webkit-flex;
