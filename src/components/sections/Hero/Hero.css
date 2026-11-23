@@ -64,7 +64,7 @@
   display: block;
   width: 100%;
 }
-.hero--motto {
+.hero--motto:any-link {
   position: absolute;
   top: 44%;
   left: 50%;
@@ -87,9 +87,9 @@
   font-size: max(0.875rem, 3cqw);
   letter-spacing: var(--tracking-caption);
 }
-.hero--motto:is(:hover, :focus-visible) span {
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+.hero--motto :is(strong, span)::selection {
+  background: transparent;
+  color: var(--color-foreground);
 }
 .hero--words {
   position: absolute;
