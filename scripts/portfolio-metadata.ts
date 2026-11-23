@@ -47,7 +47,9 @@ export function portfolioMetadata(standalone: boolean): Plugin {
       const content = server
         ? ((await server.ssrLoadModule('/' + contentPath)) as ContentModule)
         : (await runnerImport<ContentModule>(resolve(contentPath), { configFile: false })).module;
-      const { name, role, description, siteUrl, linkedIn, github } = content.portfolio;
+      const { name, role, description, linkedIn, github } = content.portfolio;
+      const pagesBaseUrl = process.env.PAGES_BASE_URL;
+      const siteUrl = pagesBaseUrl ? new URL(pagesBaseUrl + '/').href : content.portfolio.siteUrl;
       const title = [name, role.join(' ')].join(' — ');
       const imageUrl = new URL('share.jpg', siteUrl).href;
       const colors = readBrandColors();
@@ -70,6 +72,7 @@ export function portfolioMetadata(standalone: boolean): Plugin {
           ];
       const fields: Record<string, string> = {
         ...colors,
+        robots: pagesBaseUrl ? 'index, follow' : 'noindex, nofollow',
         name,
         title,
         description,

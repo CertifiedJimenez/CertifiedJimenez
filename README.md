@@ -119,6 +119,12 @@ docker compose exec portfolio bun run check
 docker compose exec portfolio bun run build:html
 ```
 
+## GitHub Pages
+
+Pushes to `main` run the quality checks, build both exports and publish `dist/`
+to GitHub Pages. The workflow uses the Pages URL for canonical and sharing links.
+You can also run **Build and deploy portfolio** manually on `main`.
+
 ## Reference and content
 
 Design reference: [crrtt.com](https://www.crrtt.com/), original design by Brijan Powell.
@@ -128,7 +134,7 @@ Content comes from the existing portfolio,
 [LinkedIn](https://www.linkedin.com/in/cristofer-jimenez) and the public
 [DriveLog repository](https://github.com/CertifiedJimenez/drivelog).
 Social previews use the profile title and description from `src/content/portfolio.ts`.
-Set `siteUrl` there to the final site address (including its path, if any).
+For builds outside GitHub Pages, set `siteUrl` there to the final site address.
 The static HTML includes Open Graph and Twitter Card tags before React runs.
 The normal build includes the original icons and `share.jpg`. Link previews require
 a public HTTPS page and image. If you host the single HTML export, also serve
