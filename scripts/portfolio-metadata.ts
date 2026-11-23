@@ -49,7 +49,10 @@ export function portfolioMetadata(standalone: boolean): Plugin {
         : (await runnerImport<ContentModule>(resolve(contentPath), { configFile: false })).module;
       const { name, role, description, linkedIn, github } = content.portfolio;
       const pagesBaseUrl = process.env.PAGES_BASE_URL;
-      const siteUrl = pagesBaseUrl ? new URL(pagesBaseUrl + '/').href : content.portfolio.siteUrl;
+      const canonical = new URL(pagesBaseUrl ? pagesBaseUrl + '/' : content.portfolio.siteUrl);
+      // Pages may report HTTP while Cloudflare already serves the custom domain over HTTPS.
+      if (pagesBaseUrl) canonical.protocol = 'https:';
+      const siteUrl = canonical.href;
       const title = [name, role.join(' ')].join(' — ');
       const imageUrl = new URL('share.jpg', siteUrl).href;
       const colors = readBrandColors();
