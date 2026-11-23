@@ -17,6 +17,7 @@ export function usePortfolioMotion(rootRef: RefObject<HTMLDivElement | null>) {
   useLayoutEffect(() => {
     const root = rootRef.current;
     if (!root) return;
+    let initialAnchor = document.getElementById(window.location.hash.slice(1));
     const media = gsap.matchMedia();
     media.add(
       {
@@ -46,6 +47,12 @@ export function usePortfolioMotion(rootRef: RefObject<HTMLDivElement | null>) {
         void document.fonts.ready.then(() => {
           if (disposed) return;
           ScrollTrigger.refresh();
+          if (initialAnchor) {
+            if (window.location.hash === '#' + initialAnchor.id) {
+              initialAnchor.scrollIntoView({ behavior: 'instant' });
+            }
+            initialAnchor = null;
+          }
           observer = new ResizeObserver(() => {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(() => ScrollTrigger.refresh(), 150);
