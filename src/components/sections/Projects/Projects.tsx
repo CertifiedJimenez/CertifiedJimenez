@@ -15,7 +15,7 @@ export function Projects(props: { projects: Project[] }) {
       <div className="container">
         <div className="c-col-20 c-offset-2">
           <div className="projects--wrapper">
-            <h2 className="projects--heading" id="personal-projects-heading">
+            <h2 className="work-heading" id="personal-projects-heading">
               Personal Projects
             </h2>
             {props.projects.map((project, index) => (

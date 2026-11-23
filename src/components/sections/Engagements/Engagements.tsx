@@ -11,21 +11,27 @@ import './Engagements.css';
 export function Engagements(props: { engagements: Engagement[] }) {
   return (
     <section className="engagements" id="engagements" aria-labelledby="engagements-heading">
-      <h2 id="engagements-heading">Selected Engagements</h2>
-      {props.engagements.map(({ company, role, period, summary }) => (
-        <article className="engagements--row" key={company}>
-          <div>
-            <h3>{company}</h3>
-            <p>{role}</p>
-            <p className="engagements--period">{period}</p>
+      <div className="container">
+        <div className="c-col-20 c-offset-2">
+          <h2 id="engagements-heading" className="work-heading">
+            Selected Engagements
+          </h2>
+          <div className="engagements--list">
+            {props.engagements.map(({ company, role, period, summary }) => (
+              <article className="engagements--row" key={company}>
+                <p className="engagements--period">{period}</p>
+                <h3>{company}</h3>
+                <p className="engagements--role">{role}</p>
+                <p className="engagements--summary">{summary}</p>
+              </article>
+            ))}
           </div>
-          <p className="engagements--summary">{summary}</p>
-        </article>
-      ))}
-      <div className="engagements--download">
-        <a href={cv} download="Cristofer-Jimenez-Hernandez-CV.pdf">
-          Download CV (PDF)
-        </a>
+          <div className="engagements--download">
+            <a href={cv} download="Cristofer-Jimenez-Hernandez-CV.pdf">
+              Download CV (PDF)
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -8,6 +8,11 @@ html {
   color: var(--color-foreground);
   min-height: 100vh;
 }
+.work-heading {
+  margin: 0 0 clamp(2rem, 6vw, 6rem);
+  font: 400 clamp(1.75rem, 4.5vw, 4rem) / 1.1 var(--font-heading);
+  text-align: center;
+}
 .artwork {
   display: contents;
 }
