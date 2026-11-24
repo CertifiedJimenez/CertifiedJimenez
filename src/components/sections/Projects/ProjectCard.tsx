@@ -19,13 +19,15 @@ export function ProjectCard(props: { project: Project; index: number }) {
     >
       <WorkEmblem className="projects--single-hover" index={index} />
       <div className="projects--info">
-        <div className="projects--client">
+        <div className="projects--client" data-work-reveal>
           <p>{project.technologies}</p>
         </div>
       </div>
       <div className="projects--title">
-        <span className="projects--year hide-mobile">/ {project.year}</span>
-        <h3>
+        <span className="projects--year hide-mobile" data-work-reveal>
+          / {project.year}
+        </span>
+        <h3 data-work-reveal>
           <ExternalLink href={project.href}>
             {project.title.map((line) => (
               <span className="text-line" key={line}>

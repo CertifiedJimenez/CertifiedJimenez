@@ -83,15 +83,8 @@ export function animateScroll(root: HTMLElement) {
   }
 
   root.querySelectorAll('[data-work-entry]').forEach((entry) => {
-    const selectEntry = gsap.utils.selector(entry);
-    const items = [
-      ...selectEntry('.projects--client, .engagements--role'),
-      ...selectEntry('.projects--year, .engagements--period'),
-      ...selectEntry('h3'),
-      ...selectEntry('.engagements--summary'),
-    ];
     gsap.fromTo(
-      items,
+      entry.querySelectorAll('[data-work-reveal]'),
       { opacity: 0, y: 40, rotation: 5 },
       {
         opacity: 1,

@@ -34,14 +34,18 @@ export function Engagements(props: { engagements: Engagement[] }) {
                   download={cvFilename}
                   aria-label={`${company} — Download CV`}
                 >
-                  <div className="engagements--title">
-                    <h3>{company}</h3>
-                    <span className="engagements--period" title={period}>
-                      / {year}
-                    </span>
+                  <div data-work-reveal>
+                    <div className="engagements--title">
+                      <h3>{company}</h3>
+                      <span className="engagements--period" title={period}>
+                        / {year}
+                      </span>
+                    </div>
+                    <p className="engagements--role">{role}</p>
                   </div>
-                  <p className="engagements--role">{role}</p>
-                  <p className="engagements--summary">{summary}</p>
+                  <p className="engagements--summary" data-work-reveal>
+                    {summary}
+                  </p>
                   <WorkEmblem className="engagements--emblem" index={index} />
                 </a>
               </article>
