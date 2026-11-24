@@ -5,7 +5,8 @@ import words from '../../../assets/icons/hero-words.svg?raw';
 import triangles from '../../../assets/icons/hero-triangles.svg?raw';
 import circles from '../../../assets/icons/hero-circles.svg?raw';
 import alternateWords from '../../../assets/icons/alternate-words.svg?raw';
-import angel from '../../../assets/images/angel2.png';
+import { AngelReveal } from './AngelReveal';
+import { useTheme } from '../../../hooks/useTheme';
 import './Hero.css';
 
 /**
@@ -15,6 +16,7 @@ import './Hero.css';
  * @returns The opening artwork with a link to the reading behind the motto.
  */
 export function Hero(props: { motto: PortfolioContent['hero'] }) {
+  const { mode } = useTheme();
   return (
     <section className="hero" aria-label="Introduction">
       <div className="container">
@@ -39,8 +41,8 @@ export function Hero(props: { motto: PortfolioContent['hero'] }) {
           <div className="hero--triquetra">
             <Artwork svg={circles} />
           </div>
-          <div className="hero--alternate">
-            <img src={angel} alt="" width="1086" height="1448" fetchPriority="high" />
+          <div key={mode} className="hero--alternate">
+            {mode !== 'dark' && <AngelReveal hoverStrength={0.66} splatDetail={0.82} />}
             <div className="hero--alternate-text">
               <Artwork svg={alternateWords} />
               <ExternalLink

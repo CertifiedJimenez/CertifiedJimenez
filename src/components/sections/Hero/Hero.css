@@ -29,6 +29,8 @@
   margin: 0;
 }
 .hero--alternate {
+  touch-action: pan-y pinch-zoom;
+  user-select: none;
   display: none;
   position: relative;
   margin-inline: auto;
@@ -51,7 +53,22 @@
   width: 100%;
   height: auto;
 }
-.theme-light .hero--alternate img {
+.hero--engraving {
+  position: relative;
+  background: var(--color-background);
+}
+.hero--engraving img[data-sampling='true'],
+.hero--engraving:has(canvas:not([hidden])) img {
+  visibility: hidden;
+}
+.hero--engraving canvas {
+  position: absolute;
+  inset: calc(0% - var(--splat-overscan));
+  width: calc(100% + 2 * var(--splat-overscan));
+  height: calc(100% + 2 * var(--splat-overscan));
+  pointer-events: none;
+}
+.theme-light .hero--engraving img {
   filter: invert(1) hue-rotate(180deg) saturate(1.45);
   mix-blend-mode: multiply;
 }
@@ -222,4 +239,19 @@
   left: 2.5%;
   right: 2.5%;
   bottom: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero--alternate-text > .artwork > svg {
+    transform-origin: 49% 54%;
+    animation: hero-orbit-in 2.4s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  }
+}
+@keyframes hero-orbit-in {
+  from {
+    transform: rotate(-38deg);
+  }
+  to {
+    transform: rotate(0);
+  }
 }
