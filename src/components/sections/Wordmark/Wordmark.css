@@ -1,14 +1,15 @@
 .wordmark {
+  --wordmark-compact-gap: 9.375vw;
   padding: 24.15459vw 0 0;
 }
 @media (max-width: 768px) {
   :is(.alternate-artwork, .theme-light) .wordmark {
-    padding-top: 12vw;
+    padding-top: var(--wordmark-compact-gap);
   }
 }
 @media (min-width: 769px) {
   .wordmark {
-    padding: 9.375vw 0 0;
+    padding-top: var(--wordmark-compact-gap);
   }
 }
 .wordmark--wrap {
