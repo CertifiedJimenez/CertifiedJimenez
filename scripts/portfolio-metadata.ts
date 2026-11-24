@@ -86,7 +86,7 @@ export function portfolioMetadata(standalone: boolean): Plugin {
         description,
         siteUrl,
         imageUrl,
-        imageAlt: 'A red illustrated hand on a black background.',
+        imageAlt: 'Cristofer Jimenez in white lettering beside a red angel engraving on black.',
       };
       const structuredData = {
         '@context': 'https://schema.org',
