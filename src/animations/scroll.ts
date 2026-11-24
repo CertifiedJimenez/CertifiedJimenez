@@ -91,7 +91,7 @@ export function animateScroll(root: HTMLElement) {
         y: 0,
         rotation: 0,
         duration: 2,
-        stagger: 0.2,
+        stagger: entry.hasAttribute('data-project') ? 0.2 : 0.35,
         ease: 'power4.out',
         scrollTrigger: { trigger: entry, start: 'top 85%', once: true },
       },
