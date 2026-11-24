@@ -68,7 +68,7 @@ export function animateScroll(root: HTMLElement) {
     },
   );
 
-  for (const item of select('#engagements-heading, .engagements--row, .engagements--download')) {
+  for (const item of select('#engagements-heading, .engagements--download')) {
     gsap.fromTo(
       item,
       { opacity: 0, y: 20 },
@@ -82,10 +82,14 @@ export function animateScroll(root: HTMLElement) {
     );
   }
 
-  root.querySelectorAll('[data-project]').forEach((project) => {
-    const items = project.querySelectorAll(
-      '.projects--client, .projects--title h3, .projects--year',
-    );
+  root.querySelectorAll('[data-work-entry]').forEach((entry) => {
+    const selectEntry = gsap.utils.selector(entry);
+    const items = [
+      ...selectEntry('.projects--client, .engagements--role'),
+      ...selectEntry('.projects--year, .engagements--period'),
+      ...selectEntry('h3'),
+      ...selectEntry('.engagements--summary'),
+    ];
     gsap.fromTo(
       items,
       { opacity: 0, y: 40, rotation: 5 },
@@ -96,7 +100,7 @@ export function animateScroll(root: HTMLElement) {
         duration: 2,
         stagger: 0.2,
         ease: 'power4.out',
-        scrollTrigger: { trigger: project, start: 'top 85%', once: true },
+        scrollTrigger: { trigger: entry, start: 'top 85%', once: true },
       },
     );
   });
