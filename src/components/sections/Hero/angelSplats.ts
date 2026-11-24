@@ -3,6 +3,8 @@ export interface SplatControls {
   hoverStrength: number;
   /** Engraving detail, from loose sparse grains at 0 to dense, aligned grains at 1. */
   splatDetail: number;
+  /** Fingertip pickup radius relative to the image width, clamped to 0.02–0.3. */
+  touchBrushRadius?: number;
 }
 
 // Each point carries its position on the engraving, its ink density and a random seed.
@@ -93,9 +95,8 @@ void main() {
     vec2 side = vec2(-direction.y, direction.x);
     vec2 relative = grain.xy + offset - start;
     float along = clamp(dot(relative, direction), 0.0, lengthPx);
-    float pressure = loads[i].y;
     float id = loads[i].x;
-    float radius = width * (id > 0.0 ? 0.072 + pressure * 0.025 : 0.058);
+    float radius = width * loads[i].y;
     float contact = 1.0 - smoothstep(radius * 0.16, radius, length(relative - direction * along));
 
     // Uneven bristles catch different amounts of ink across the width of a stroke.
@@ -162,6 +163,11 @@ export function createAngelSplats(
   // the local brightness gradient so narrow feather barbs keep their direction.
   const stride = 6;
   const grains = new Float32Array(Math.ceil(width / 2) * height * stride);
+  // A small occupancy map lets empty space inside the image behave like the page.
+  const cellSize = 12;
+  const columns = Math.ceil(width / cellSize);
+  const rows = Math.ceil(height / cellSize);
+  const occupied = new Uint8Array(columns * rows);
   let used = 0;
   for (let y = 1; y < height - 1; y++) {
     for (let x = 1 + (y % 2); x < width - 1; x += 2) {
@@ -172,6 +178,7 @@ export function createAngelSplats(
       const dx = pixels[i + 4]! - pixels[i - 4]!;
       const dy = pixels[i + width * 4]! - pixels[i - width * 4]!;
       const length = Math.hypot(dx, dy);
+      occupied[Math.floor(y / cellSize) * columns + Math.floor(x / cellSize)] = 1;
       grains[used++] = x + 0.5;
       grains[used++] = y + 0.5;
       grains[used++] = ink;
@@ -264,7 +271,7 @@ export function createAngelSplats(
     const strength = gl.getUniformLocation(brush, 'hoverStrength');
     const elapsed = gl.getUniformLocation(brush, 'elapsed');
     const paths = new Float32Array(batchSize * 4);
-    const pressures = new Float32Array(batchSize * 2);
+    const brushLoads = new Float32Array(batchSize * 2);
     let queued = 0;
     let current = 0;
     let recovering = 0;
@@ -276,7 +283,7 @@ export function createAngelSplats(
       gl.uniform1i(segmentCount, queued);
       if (queued) {
         gl.uniform4fv(segments, paths);
-        gl.uniform2fv(loads, pressures);
+        gl.uniform2fv(loads, brushLoads);
       }
       const next = 1 - current;
       gl.bindVertexArray(states[current]!.array);
@@ -295,10 +302,33 @@ export function createAngelSplats(
     gl.clearColor(0, 0, 0, 0);
     if (gl.getError() !== gl.NO_ERROR) throw new Error('Point buffer unavailable.');
     return {
-      sweep(x0: number, y0: number, x1: number, y1: number, stroke: number, pressure: number) {
-        if (queued === batchSize) simulate(0, pressures[(queued - 1) * 2]!);
+      hasInkNear(x: number, y: number, radius: number) {
+        const cx = (x * width) / cellSize;
+        const cy = (y * height) / cellSize;
+        const reach = (radius * width) / cellSize;
+        for (
+          let row = Math.max(0, Math.floor(cy - reach));
+          row <= Math.min(rows - 1, Math.floor(cy + reach));
+          row++
+        ) {
+          for (
+            let col = Math.max(0, Math.floor(cx - reach));
+            col <= Math.min(columns - 1, Math.floor(cx + reach));
+            col++
+          ) {
+            if (
+              occupied[row * columns + col] &&
+              Math.hypot(col + 0.5 - cx, row + 0.5 - cy) <= reach
+            )
+              return true;
+          }
+        }
+        return false;
+      },
+      sweep(x0: number, y0: number, x1: number, y1: number, stroke: number, radius: number) {
+        if (queued === batchSize) simulate(0, brushLoads[(queued - 1) * 2]!);
         paths.set([x0 * width, y0 * height, x1 * width, y1 * height], queued * 4);
-        pressures.set([stroke, pressure], queued * 2);
+        brushLoads.set([stroke, radius], queued * 2);
         queued++;
         recovering = stroke ? 12 : Math.max(recovering, 4);
       },

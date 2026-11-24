@@ -1,4 +1,4 @@
-import { useLayoutEffect, type RefObject } from 'react';
+import { useCallback, useLayoutEffect, useRef, type RefObject } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
@@ -12,8 +12,16 @@ gsap.registerPlugin(ScrollTrigger);
  * Owns animation, scrolling and listeners for one mounted portfolio.
  * GSAP contexts, observers and Lenis are all disposed on hot reload or unmount.
  * @param rootRef - Ref to the portfolio's outermost DOM element.
+ * @returns A callback that pauses page scrolling during an artwork drag.
  */
 export function usePortfolioMotion(rootRef: RefObject<HTMLDivElement | null>) {
+  const scroller = useRef<Lenis | undefined>(undefined);
+  const brushActive = useRef(false);
+  const onBrushDragChange = useCallback((active: boolean) => {
+    brushActive.current = active;
+    if (active) scroller.current?.stop();
+    else scroller.current?.start();
+  }, []);
   useLayoutEffect(() => {
     const root = rootRef.current;
     if (!root) return;
@@ -34,6 +42,8 @@ export function usePortfolioMotion(rootRef: RefObject<HTMLDivElement | null>) {
         const lenis = reduced
           ? undefined
           : new Lenis({ lerp: 0.1, smoothWheel: true, anchors: true });
+        scroller.current = lenis;
+        if (brushActive.current) lenis?.stop();
         const tick = (seconds: number) => lenis?.raf(seconds * 1000);
         lenis?.on('scroll', ScrollTrigger.update);
         gsap.ticker.add(tick);
@@ -65,6 +75,7 @@ export function usePortfolioMotion(rootRef: RefObject<HTMLDivElement | null>) {
           observer?.disconnect();
           events.abort();
           gsap.ticker.remove(tick);
+          scroller.current = undefined;
           lenis?.destroy();
           animations.revert();
         };
@@ -73,4 +84,5 @@ export function usePortfolioMotion(rootRef: RefObject<HTMLDivElement | null>) {
     );
     return () => media.revert();
   }, [rootRef]);
+  return onBrushDragChange;
 }

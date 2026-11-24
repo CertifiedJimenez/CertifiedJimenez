@@ -15,7 +15,10 @@ import './Hero.css';
  * @param props - The two-line motto and its source on the angel artwork.
  * @returns The opening artwork with a link to the reading behind the motto.
  */
-export function Hero(props: { motto: PortfolioContent['hero'] }) {
+export function Hero(props: {
+  motto: PortfolioContent['hero'];
+  onBrushDragChange?: (active: boolean) => void;
+}) {
   const { mode } = useTheme();
   return (
     <section className="hero" aria-label="Introduction">
@@ -42,7 +45,13 @@ export function Hero(props: { motto: PortfolioContent['hero'] }) {
             <Artwork svg={circles} />
           </div>
           <div key={mode} className="hero--alternate">
-            {mode !== 'dark' && <AngelReveal hoverStrength={0.66} splatDetail={0.82} />}
+            {mode !== 'dark' && (
+              <AngelReveal
+                hoverStrength={0.66}
+                splatDetail={0.82}
+                onDragChange={props.onBrushDragChange}
+              />
+            )}
             <div className="hero--alternate-text">
               <Artwork svg={alternateWords} />
               <ExternalLink
