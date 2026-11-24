@@ -4,6 +4,8 @@ import { Divider } from '../../common/Divider/Divider';
 import { WorkEmblem } from '../../common/WorkEmblem/WorkEmblem';
 import './Engagements.css';
 
+const cvFilename = 'Cristofer-Jimenez-Hernandez-CV.pdf';
+
 /**
  * Presents selected professional work ahead of the personal projects.
  * @component
@@ -20,23 +22,30 @@ export function Engagements(props: { engagements: Engagement[] }) {
           </h2>
           <div className="engagements--list">
             {props.engagements.map(({ company, role, year, period, summary }, index) => (
-              <article className="engagements--row" key={company}>
-                <details className="engagements--dates">
-                  <summary>
-                    <h3>
-                      <span className="engagements--period">/ {year}</span>
-                      {company}
-                      <WorkEmblem className="engagements--emblem" index={index} />
-                    </h3>
-                  </summary>
-                  <p className="engagements--tenure">{period}</p>
-                </details>
-                <p className="engagements--role">{role}</p>
-                <p className="engagements--summary">{summary}</p>
+              <article
+                className="engagements--row"
+                key={company}
+                data-work-entry
+                data-cursor="skull"
+              >
+                <a
+                  className="engagements--link"
+                  href={cv}
+                  download={cvFilename}
+                  aria-label={`${company} — Download CV`}
+                >
+                  <span className="engagements--period" title={period}>
+                    / {year}
+                  </span>
+                  <h3>{company}</h3>
+                  <p className="engagements--role">{role}</p>
+                  <p className="engagements--summary">{summary}</p>
+                  <WorkEmblem className="engagements--emblem" index={index} />
+                </a>
               </article>
             ))}
           </div>
-          <Divider variant="cv" href={cv} filename="Cristofer-Jimenez-Hernandez-CV.pdf" />
+          <Divider variant="cv" href={cv} filename={cvFilename} />
         </div>
       </div>
     </section>

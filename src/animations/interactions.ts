@@ -11,11 +11,9 @@ export function animateInteractions(
   signal: AbortSignal,
   reducedMotion: boolean,
 ) {
-  root.querySelectorAll<HTMLElement>('[data-project], .engagements--row').forEach((entry) => {
-    const control = entry.querySelector<HTMLElement>('a, summary');
+  root.querySelectorAll<HTMLElement>('[data-work-entry]').forEach((entry) => {
+    const control = entry.querySelector('a');
     if (!control) return;
-    const dates = entry.querySelector('details');
-    const pointerArea = dates ? entry : control;
     const ornament = entry.querySelectorAll('.work-emblem__numeral, .work-emblem path');
     const hover = gsap
       .timeline({
@@ -25,12 +23,13 @@ export function animateInteractions(
       .to(ornament, { opacity: 1, stagger: 0.015 }, 0.1);
     let hovered = false;
     const update = () => {
-      const visible = hovered || control.matches(':focus-visible') || dates?.open;
+      const visible = hovered || control.matches(':focus-visible');
+      entry.toggleAttribute('data-work-active', visible);
       if (reducedMotion) hover.progress(visible ? 1 : 0).pause();
       else if (visible) hover.timeScale(1.5).play();
       else hover.timeScale(3).reverse();
     };
-    pointerArea.addEventListener(
+    control.addEventListener(
       'pointerenter',
       (event) => {
         hovered = event.pointerType !== 'touch';
@@ -38,7 +37,7 @@ export function animateInteractions(
       },
       { signal },
     );
-    pointerArea.addEventListener(
+    control.addEventListener(
       'pointerleave',
       () => {
         hovered = false;
@@ -48,7 +47,9 @@ export function animateInteractions(
     );
     control.addEventListener('focus', update, { signal });
     control.addEventListener('blur', update, { signal });
-    dates?.addEventListener('toggle', update, { signal });
+    signal.addEventListener('abort', () => entry.removeAttribute('data-work-active'), {
+      once: true,
+    });
     update();
   });
 
@@ -75,31 +76,39 @@ export function animateInteractions(
     { signal },
   );
 
-  root.querySelectorAll<HTMLElement>('[data-cursor]').forEach((area) => {
-    const cursor = root.querySelector<HTMLElement>(`.cursor-art--${area.dataset.cursor}`);
-    if (!cursor) return;
+  for (const artwork of ['skull', 'hand', 'logo']) {
+    const cursor = root.querySelector<HTMLElement>(`.cursor-art--${artwork}`);
+    if (!cursor) continue;
     const show = gsap.to(cursor, { opacity: 1, scale: 1, duration: 0.8, paused: true });
     const xTo = gsap.quickTo(cursor, 'x', { duration: 0.4 });
     const yTo = gsap.quickTo(cursor, 'y', { duration: 0.4 });
-    area.addEventListener(
-      'pointerenter',
-      () => {
-        if (root.classList.contains('alternate-artwork')) show.play();
-      },
-      { signal },
-    );
-    area.addEventListener('pointerleave', () => show.reverse(), { signal });
-    area.addEventListener(
-      'pointermove',
-      (event) => {
-        if (!root.classList.contains('alternate-artwork')) {
-          show.reverse();
-          return;
-        }
-        xTo(event.clientX - cursor.offsetWidth / 2);
-        yTo(event.clientY - cursor.offsetHeight / 2);
-      },
-      { signal },
-    );
-  });
+    for (const area of root.querySelectorAll<HTMLElement>(`[data-cursor="${artwork}"]`)) {
+      area.addEventListener(
+        'pointerenter',
+        (event) => {
+          if (event.pointerType === 'touch' || !root.classList.contains('alternate-artwork'))
+            return;
+          gsap.set(cursor, {
+            x: event.clientX - cursor.offsetWidth / 2,
+            y: event.clientY - cursor.offsetHeight / 2,
+          });
+          show.play();
+        },
+        { signal },
+      );
+      area.addEventListener('pointerleave', () => show.reverse(), { signal });
+      area.addEventListener(
+        'pointermove',
+        (event) => {
+          if (event.pointerType === 'touch' || !root.classList.contains('alternate-artwork')) {
+            show.reverse();
+            return;
+          }
+          xTo(event.clientX - cursor.offsetWidth / 2);
+          yTo(event.clientY - cursor.offsetHeight / 2);
+        },
+        { signal },
+      );
+    }
+  }
 }

@@ -232,10 +232,6 @@
 
 /* Let the cascade resolve the current theme even if it changes during focus or hover. */
 .projects--single :is(.projects--title a, .projects--year, .projects--client p) {
-  color: var(--project-ink, var(--color-accent));
-  transition: color var(--project-hover-duration, var(--project-hover-out)) var(--ease-link);
-}
-.projects--single:has(.projects--title a:is(:hover, :focus)) {
-  --project-ink: var(--color-hover);
-  --project-hover-duration: var(--project-hover-in);
+  color: var(--work-hover-ink, var(--color-accent));
+  transition: var(--work-hover-transition);
 }

@@ -1,3 +1,11 @@
+[data-work-entry] {
+  --work-hover-transition: color var(--work-hover-duration, var(--project-hover-out))
+    var(--ease-link);
+}
+[data-work-active] {
+  --work-hover-duration: var(--project-hover-in);
+  --work-hover-ink: var(--color-hover);
+}
 .work-emblem {
   position: absolute;
   pointer-events: none;

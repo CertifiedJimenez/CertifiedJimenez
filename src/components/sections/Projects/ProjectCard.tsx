@@ -14,6 +14,7 @@ export function ProjectCard(props: { project: Project; index: number }) {
     <article
       className={`projects--single ${project.layout === 'wide' ? 'substance' : 'davide-baratta'}`}
       data-project
+      data-work-entry
       data-cursor="skull"
     >
       <WorkEmblem className="projects--single-hover" index={index} />

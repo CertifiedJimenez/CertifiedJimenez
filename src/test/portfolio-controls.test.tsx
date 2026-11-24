@@ -9,18 +9,17 @@ import { Engagements } from '../components/sections/Engagements/Engagements';
 import { portfolio } from '../content/portfolio';
 
 describe('portfolio interactions', () => {
-  it('shows the engagement year, expands its dates and exposes a named CV download', async () => {
-    const user = userEvent.setup();
+  it('uses the same CV download for each engagement and the divider', () => {
     render(<Engagements engagements={portfolio.engagements} />);
-    const company = screen.getByRole('heading', { name: '/ 2024 Artera' });
-    const dates = screen.getByText('Aug 2023 – Dec 2024');
-    expect(dates).not.toBeVisible();
-    await user.click(company);
-    expect(dates).toBeVisible();
-    expect(screen.getByRole('link', { name: 'Download CV' })).toHaveAttribute(
-      'download',
-      'Cristofer-Jimenez-Hernandez-CV.pdf',
-    );
+    const divider = screen.getByRole('link', { name: 'Download CV' });
+    expect(divider).toHaveAttribute('download', 'Cristofer-Jimenez-Hernandez-CV.pdf');
+    for (const { company, year, period } of portfolio.engagements) {
+      const entry = screen.getByRole('link', { name: `${company} — Download CV` });
+      expect(entry).toContainElement(screen.getByRole('heading', { name: company }));
+      expect(entry).toHaveAttribute('href', divider.getAttribute('href'));
+      expect(entry).toHaveAttribute('download', divider.getAttribute('download'));
+      expect(screen.getByTitle(period)).toHaveTextContent(`/ ${year}`);
+    }
   });
   it('starts with the angel and keeps the artwork and light controls mutually exclusive', async () => {
     const user = userEvent.setup();
