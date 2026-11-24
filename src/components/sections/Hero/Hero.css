@@ -29,7 +29,6 @@
   margin: 0;
 }
 .hero--alternate {
-  touch-action: pan-y pinch-zoom;
   user-select: none;
   display: none;
   position: relative;

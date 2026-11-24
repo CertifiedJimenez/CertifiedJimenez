@@ -20,7 +20,7 @@ import { useArtworkTransition } from '../../hooks/useArtworkTransition';
 export function Home() {
   const root = useRef<HTMLDivElement>(null);
   const { mode } = useTheme();
-  usePortfolioMotion(root);
+  const onBrushDragChange = usePortfolioMotion(root);
   useArtworkTransition(root, mode);
   return (
     <div
@@ -33,7 +33,7 @@ export function Home() {
       </a>
       <Header content={portfolio} />
       <main className="portfolio">
-        <Hero motto={portfolio.hero} />
+        <Hero motto={portfolio.hero} onBrushDragChange={onBrushDragChange} />
         <Wordmark surname={portfolio.surname} />
         <Engagements engagements={portfolio.engagements} />
         <Projects projects={portfolio.projects} />

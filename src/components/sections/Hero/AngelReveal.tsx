@@ -6,16 +6,17 @@ import { createAngelSplats, type SplatControls } from './angelSplats';
 /**
  * Animates the engraving while it is visible and handles pointer movement over the lettering.
  * @component
- * @param props - Hover pull and splat detail, each adjustable from 0 to 1.
+ * @param props - Hover pull, splat detail and the fingertip brush radius as a fraction of the artwork width.
  * @returns The static angel with an optional interactive splat layer.
  */
-export function AngelReveal(props: SplatControls) {
-  const { hoverStrength, splatDetail } = props;
-  const controls = useRef({ hoverStrength, splatDetail });
+export function AngelReveal(props: SplatControls & { onDragChange?: (active: boolean) => void }) {
+  const { hoverStrength, splatDetail, touchBrushRadius = 0.13, onDragChange } = props;
+  const controls = useRef({ hoverStrength, splatDetail, touchBrushRadius });
   useLayoutEffect(() => {
     controls.current.hoverStrength = Math.min(1, Math.max(0, hoverStrength));
     controls.current.splatDetail = Math.min(1, Math.max(0, splatDetail));
-  }, [hoverStrength, splatDetail]);
+    controls.current.touchBrushRadius = Math.max(0.02, Math.min(0.3, touchBrushRadius));
+  }, [hoverStrength, splatDetail, touchBrushRadius]);
 
   const imageRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -42,6 +43,7 @@ export function AngelReveal(props: SplatControls) {
       const contact = pressed;
       pressed = null;
       lastPoint = null;
+      if (contact && dragged) onDragChange?.(false);
       if (contact?.target.hasPointerCapture(contact.id))
         contact.target.releasePointerCapture(contact.id);
     };
@@ -119,16 +121,32 @@ export function AngelReveal(props: SplatControls) {
         (pressed && event.pointerId !== pressed.id)
       )
         return;
-      if (event.pointerType === 'touch' && !pressed) return;
+      if (
+        !pressed &&
+        (event.pointerType === 'touch' ||
+          !(event.target instanceof Node) ||
+          !hero.contains(event.target))
+      )
+        return;
       const rect = image.getBoundingClientRect();
       const x = (event.clientX - rect.left) / rect.width;
       const y = (event.clientY - rect.top) / rect.height;
       if (pressed && !dragged) {
-        if (Math.hypot(event.clientX - pressed.x, event.clientY - pressed.y) < 3) return;
+        // Allow normal fingertip jitter on links, and pick up ink immediately on the art.
+        let threshold = 3;
+        if (event.pointerType === 'touch') threshold = pressed.target.closest('a') ? 6 : 1.5;
+        if (Math.hypot(event.clientX - pressed.x, event.clientY - pressed.y) < threshold) return;
         dragged = true;
+        onDragChange?.(true);
       }
       if (lastPoint && (lastPoint.x !== x || lastPoint.y !== y)) {
-        renderer.sweep(lastPoint.x, lastPoint.y, x, y, pressed ? stroke : 0, event.pressure);
+        let radius = 0.058;
+        if (pressed)
+          radius =
+            event.pointerType === 'touch'
+              ? controls.current.touchBrushRadius
+              : 0.072 + event.pressure * 0.025;
+        renderer.sweep(lastPoint.x, lastPoint.y, x, y, pressed ? stroke : 0, radius);
       }
       lastPoint = { x, y };
     };
@@ -136,21 +154,39 @@ export function AngelReveal(props: SplatControls) {
       'pointerdown',
       (event) => {
         if (!renderer || motion.matches || !event.isPrimary || event.button !== 0) return;
+        dragged = false;
         const rect = image.getBoundingClientRect();
-        lastPoint = {
-          x: (event.clientX - rect.left) / rect.width,
-          y: (event.clientY - rect.top) / rect.height,
-        };
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
+        const radius = event.pointerType === 'touch' ? controls.current.touchBrushRadius : 0.072;
+        if (!renderer.hasInkNear(x, y, radius)) return;
+        lastPoint = { x, y };
         const target = event.target instanceof Element ? event.target : hero;
         pressed = { id: event.pointerId, x: event.clientX, y: event.clientY, target };
         // Capture on the hit element so a short tap still activates the motto link.
         target.setPointerCapture(event.pointerId);
         stroke++;
-        dragged = false;
       },
       { signal },
     );
-    hero.addEventListener('pointermove', track, { signal });
+    // Native panning is decided on the first touchmove. An empty start can scroll;
+    // a captured brush contact keeps its gesture even after crossing the artwork edge.
+    hero.addEventListener(
+      'touchmove',
+      (event) => {
+        if (event.touches.length === 1 && pressed && event.cancelable) event.preventDefault();
+      },
+      { passive: false, signal },
+    );
+    hero.addEventListener(
+      'touchstart',
+      (event) => {
+        if (event.touches.length > 1) endStroke();
+      },
+      { passive: true, signal },
+    );
+    // Track a held stroke across the window, including a fast first move past the edge.
+    window.addEventListener('pointermove', track, { capture: true, signal });
     hero.addEventListener(
       'pointerleave',
       () => {
@@ -161,11 +197,19 @@ export function AngelReveal(props: SplatControls) {
     window.addEventListener(
       'pointerup',
       (event) => {
+        if (event.pointerId !== pressed?.id) return;
+        if (event.pointerType === 'touch') track(event);
+        endStroke();
+      },
+      { signal },
+    );
+    window.addEventListener(
+      'pointercancel',
+      (event) => {
         if (event.pointerId === pressed?.id) endStroke();
       },
       { signal },
     );
-    hero.addEventListener('pointercancel', endStroke, { signal });
     hero.addEventListener(
       'lostpointercapture',
       (event) => {
@@ -196,7 +240,7 @@ export function AngelReveal(props: SplatControls) {
     if (image.complete) start();
     else image.addEventListener('load', start, { once: true, signal });
     return restoreImage;
-  }, []);
+  }, [onDragChange]);
 
   return (
     <div className="hero--engraving">
