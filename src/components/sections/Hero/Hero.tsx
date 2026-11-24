@@ -42,7 +42,7 @@ export function Hero(props: { motto: PortfolioContent['hero'] }) {
             <Artwork svg={circles} />
           </div>
           <div key={mode} className="hero--alternate">
-            {mode !== 'dark' && <AngelReveal />}
+            {mode !== 'dark' && <AngelReveal hoverStrength={0.66} splatDetail={0.82} />}
             <div className="hero--alternate-text">
               <Artwork svg={alternateWords} />
               <ExternalLink

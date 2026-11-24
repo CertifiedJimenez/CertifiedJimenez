@@ -1,21 +1,29 @@
 import { useLayoutEffect, useRef } from 'react';
 import angel from '../../../assets/images/angel2.png';
 import fallback from '../../../assets/images/angel-fallback.webp';
-import { createAngelSplats } from './angelSplats';
+import { createAngelSplats, type SplatControls } from './angelSplats';
 
 /**
  * Animates the engraving while it is visible and handles pointer movement over the lettering.
  * @component
+ * @param props - Hover pull and splat detail, each adjustable from 0 to 1.
  * @returns The static angel with an optional interactive splat layer.
  */
-export function AngelReveal() {
+export function AngelReveal(props: SplatControls) {
+  const { hoverStrength, splatDetail } = props;
+  const controls = useRef({ hoverStrength, splatDetail });
+  useLayoutEffect(() => {
+    controls.current.hoverStrength = Math.min(1, Math.max(0, hoverStrength));
+    controls.current.splatDetail = Math.min(1, Math.max(0, splatDetail));
+  }, [hoverStrength, splatDetail]);
+
   const imageRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useLayoutEffect(() => {
     const image = imageRef.current;
     const canvas = canvasRef.current;
-    const hero = image?.closest<HTMLElement>('.hero--alternate');
+    const hero = image?.closest<HTMLElement>('.hero--alternate') ?? image?.parentElement;
     if (!image || !canvas || !hero) return;
     const motion = matchMedia('(prefers-reduced-motion: reduce)');
     const events = new AbortController();
@@ -91,7 +99,7 @@ export function AngelReveal() {
       }
       if (renderer) return;
       try {
-        renderer = createAngelSplats(canvas, image);
+        renderer = createAngelSplats(canvas, image, controls.current);
         observer = new IntersectionObserver(([entry]) => {
           visible = Boolean(entry?.isIntersecting);
           sync();

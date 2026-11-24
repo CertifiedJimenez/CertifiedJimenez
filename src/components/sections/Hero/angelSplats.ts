@@ -1,3 +1,10 @@
+export interface SplatControls {
+  /** Fraction of brush travel transferred by a hover stroke, from 0 to 1. */
+  hoverStrength: number;
+  /** Engraving detail, from loose sparse grains at 0 to dense, aligned grains at 1. */
+  splatDetail: number;
+}
+
 // Each point carries its position on the engraving, its ink density and a random seed.
 const vertexSource = `#version 300 es
 layout(location=0) in vec4 grain;
@@ -6,6 +13,7 @@ layout(location=2) in vec4 brushState;
 uniform vec2 viewport;
 uniform vec2 resolution;
 uniform float time;
+uniform float splatDetail;
 out vec2 axis;
 out float ink;
 out float visibility;
@@ -26,7 +34,7 @@ void main() {
   float loose = smoothstep(0.36, 0.96, seed);
   vec2 drift = tangent * (sin(angle) + 0.25 * sin(time * 0.65 + angle))
              + normal * 0.55 * cos(angle * 1.7);
-  pos += drift * arrive * resolution.x * (0.00065 + loose * 0.0058);
+  pos += drift * arrive * resolution.x * (0.00065 + loose * mix(0.013, 0.0027, splatDetail));
 
   pos += brushState.xy;
 
@@ -34,7 +42,10 @@ void main() {
   gl_PointSize = 2.65 + grain.z * 1.08 + seed * 0.75;
   axis = tangent;
   ink = min(0.94, 0.085 + grain.z * 1.10);
-  visibility = smoothstep(0.0, 0.21, arrive);
+  // Fade finer grains in as detail rises, using the same positions throughout.
+  float retention = mix(0.62, 1.0, splatDetail);
+  float coverage = smoothstep(-0.025, 0.0, retention - fract(seed * 149.73));
+  visibility = smoothstep(0.0, 0.21, arrive) * coverage;
 }
 `;
 
@@ -66,6 +77,7 @@ uniform int segmentCount;
 uniform float heldStroke;
 uniform float elapsed;
 uniform float width;
+uniform float hoverStrength;
 out vec4 nextState;
 
 void main() {
@@ -100,7 +112,7 @@ void main() {
         stroke = id;
         offset += remaining * grip;
       } else {
-        offset += remaining * catchAmount * (id > 0.0 ? 0.75 : 0.53);
+        offset += remaining * catchAmount * (id > 0.0 ? 0.75 : hoverStrength);
       }
     }
   }
@@ -124,9 +136,14 @@ void main() { color = vec4(0.0); }`;
  * Samples the engraving and its local line direction into a single GPU point buffer.
  * @param canvas - Decorative overlay with space around the engraving for displaced particles.
  * @param image - Loaded, same-origin engraving used to position the points.
+ * @param controls - Live brush and rendering settings supplied by the component.
  * @returns Frame drawing and resource cleanup operations.
  */
-export function createAngelSplats(canvas: HTMLCanvasElement, image: HTMLImageElement) {
+export function createAngelSplats(
+  canvas: HTMLCanvasElement,
+  image: HTMLImageElement,
+  controls: Readonly<SplatControls>,
+) {
   const width = Math.min(image.naturalWidth, Math.ceil(image.clientWidth * 2));
   if (!width) throw new Error('The engraving has no display area.');
   const height = Math.round((width * image.naturalHeight) / image.naturalWidth);
@@ -151,7 +168,7 @@ export function createAngelSplats(canvas: HTMLCanvasElement, image: HTMLImageEle
       const i = (y * width + x) * 4;
       const ink = (pixels[i]! * pixels[i + 3]!) / (255 * 255);
       // Thin the shadow ink more heavily to leave dark space between clusters.
-      if (ink < 0.043 || Math.random() > 0.58 + 0.32 * ink) continue;
+      if (ink < 0.043 || Math.random() > 0.68 + 0.32 * ink) continue;
       const dx = pixels[i + 4]! - pixels[i - 4]!;
       const dy = pixels[i + width * 4]! - pixels[i - width * 4]!;
       const length = Math.hypot(dx, dy);
@@ -237,12 +254,14 @@ export function createAngelSplats(canvas: HTMLCanvasElement, image: HTMLImageEle
     gl.uniform2f(gl.getUniformLocation(render, 'viewport'), canvas.width, canvas.height);
     gl.uniform2f(gl.getUniformLocation(render, 'resolution'), width, height);
     const clock = gl.getUniformLocation(render, 'time');
+    const detail = gl.getUniformLocation(render, 'splatDetail');
     gl.useProgram(brush);
     gl.uniform1f(gl.getUniformLocation(brush, 'width'), width);
     const segments = gl.getUniformLocation(brush, 'segments[0]');
     const loads = gl.getUniformLocation(brush, 'loads[0]');
     const segmentCount = gl.getUniformLocation(brush, 'segmentCount');
     const held = gl.getUniformLocation(brush, 'heldStroke');
+    const strength = gl.getUniformLocation(brush, 'hoverStrength');
     const elapsed = gl.getUniformLocation(brush, 'elapsed');
     const paths = new Float32Array(batchSize * 4);
     const pressures = new Float32Array(batchSize * 2);
@@ -252,6 +271,7 @@ export function createAngelSplats(canvas: HTMLCanvasElement, image: HTMLImageEle
     const simulate = (dt: number, stroke: number) => {
       gl.useProgram(brush);
       gl.uniform1f(held, stroke);
+      gl.uniform1f(strength, controls.hoverStrength);
       gl.uniform1f(elapsed, dt);
       gl.uniform1i(segmentCount, queued);
       if (queued) {
@@ -291,6 +311,7 @@ export function createAngelSplats(canvas: HTMLCanvasElement, image: HTMLImageEle
         gl.bindVertexArray(states[current]!.array);
         gl.clear(gl.COLOR_BUFFER_BIT);
         gl.uniform1f(clock, seconds);
+        gl.uniform1f(detail, controls.splatDetail);
         gl.drawArrays(gl.POINTS, 0, count);
       },
       dispose,
