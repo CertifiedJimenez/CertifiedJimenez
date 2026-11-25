@@ -2,7 +2,8 @@
   position: absolute;
   inset: 0 0 auto;
   display: grid;
-  grid-template-columns: 11.1vw 28.8vw minmax(0, 1fr) auto;
+  grid-template-areas: 'logo . identity . contact . mark';
+  grid-template-columns: auto 1fr auto 1.5fr auto 2.5fr auto;
   align-items: start;
   padding: var(--masthead-inset) var(--masthead-inset) 0;
   z-index: 100;
@@ -11,16 +12,16 @@
   display: contents;
 }
 .header__logo {
-  grid-area: 1 / 1;
+  grid-area: logo;
 }
 .header__where {
-  grid-area: 1 / 2;
+  grid-area: identity;
 }
 .header__mail {
-  grid-area: 1 / 3;
+  grid-area: contact;
 }
 .header__right {
-  grid-area: 1 / 4;
+  grid-area: mark;
   justify-self: end;
 }
 .header a,
