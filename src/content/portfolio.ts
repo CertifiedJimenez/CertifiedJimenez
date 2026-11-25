@@ -19,7 +19,6 @@ export const portfolio = {
   locationUrl: 'https://en.wikipedia.org/wiki/London',
   email,
   role: ['Senior Software Engineer', 'Contractor'],
-  availability: 'Drop me a line',
   description:
     'Cristofer Jimenez is a London-based software engineering contractor specialising in Python backends, distributed systems, and applied AI.',
   linkedIn,

@@ -37,16 +37,7 @@ export function Header(props: { content: PortfolioContent }) {
           <p>
             Contact:
             <br />
-            <a href={`mailto:${profile.email}`} aria-label={`Email ${profile.name}`}>
-              Get in touch
-            </a>
-          </p>
-        </div>
-        <div className="header__availability hide-mobile">
-          <p>
-            Availability:
-            <br />
-            {profile.availability}
+            <a href={`mailto:${profile.email}`}>Email</a>
           </p>
         </div>
         <div className="header__jury hide-mobile">

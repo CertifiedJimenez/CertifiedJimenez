@@ -14,7 +14,7 @@
   overflow: visible;
 }
 :is(.alternate-artwork, .theme-light) .hero {
-  --hero-top-space: calc(7.24638vw + 4rem);
+  --hero-top-space: max(26vw, calc(var(--masthead-inset) + 4rem));
   --hero-bottom-space: clamp(1rem, 3svh, 2rem);
   margin: 0;
   padding: var(--hero-top-space) 0 var(--hero-bottom-space);

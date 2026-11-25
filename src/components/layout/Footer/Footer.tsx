@@ -20,11 +20,10 @@ export function Footer(props: { content: PortfolioContent }) {
     <footer className="footer">
       <div className="container">
         <div className="footer__left">
-          <ul>
-            <li className="hide-mobile">{footer.year}</li>
-            <li className="hide-mobile">{profile.name}</li>
-            <li className="hide-mobile">{profile.location}</li>
-            <li className="hide-desktop">Availability: {profile.availability}</li>
+          <ul className="hide-mobile">
+            <li>{footer.year}</li>
+            <li>{profile.name}</li>
+            <li>{profile.location}</li>
           </ul>
         </div>
         <div className="footer__center">

@@ -44,7 +44,6 @@ export interface PortfolioContent {
   locationUrl: string;
   email: string;
   role: string[];
-  availability: string;
   description: string;
   linkedIn: string;
   github: string;
